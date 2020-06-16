@@ -1,0 +1,121 @@
+<node id="GCU">
+    <node id="trigger_manager" address="0x800" description="trigger logic configurator" fwinfo="endpoint;width=2" tags="slave0">
+	    <node id="auto_trigger_mode" address="0x0"  description="pre trigger duration">
+        <node id="force_trigger_ch0" mask="0x00000001" />
+        <node id="force_trigger_ch1" mask="0x00000002" />
+        <node id="force_trigger_ch2" mask="0x00000004" />
+        <node id="trigger_source_selection" mask="0x00000008" />
+        <node id="trigger_path_selection" mask="0x00000010" />
+
+        <node id="external_trigger_enable" mask="0x00000020" />
+        <node id="trigger_on_threshold" mask="0x00000040" />
+        <node id="global_trigger_enable" mask="0x00000080" />
+      </node>
+    </node>
+    <node id="l1_cache_0" address="0x880" description="l1 cache and trigger genetator" fwinfo="endpoint;width=3" tags="slave0">
+	    <node id="pre_trigger" address="0x0"  description="pre trigger duration"/>
+	    <node id="trigger_window" address="0x1" description="package sample count "/>
+	    <node id="trigger_rate" address="0x2" description="trigger counts per second "/>
+	    <node id="trigger_threshold" address="0x3" description="trigger threshold in ADC counts "/>
+	    <node id="control_register" address="0x4" description="trigger threshold in ADC counts ">
+        <node id="soft_reset" mask="0x00000001" />
+        <node id="align_l1_cache" mask="0x0000002" />
+      </node>
+    </node>
+    <node id="l1_cache_1" address="0x890" description="l1 cache and trigger genetator" fwinfo="endpoint;width=2" tags="slave0">
+	    <node id="pre_trigger" address="0x0"  description="pre trigger duration"/>
+	    <node id="trigger_window" address="0x1" description="package sample count "/>
+	    <node id="trigger_rate" address="0x2" description="trigger counts per second "/>
+	    <node id="trigger_threshold" address="0x3" description="trigger threshold in ADC counts "/>
+	    <node id="control_register" address="0x4" description="trigger threshold in ADC counts ">
+        <node id="soft_reset" mask="0x00000001" />
+        <node id="align_l1_cache" mask="0x00000002" />
+      </node>
+    </node>
+    <node id="l1_cache_2" address="0x900" description="l1 cache and trigger genetator" fwinfo="endpoint;width=2" tags="slave0">
+	    <node id="pre_trigger" address="0x0"  description="pre trigger duration"/>
+	    <node id="trigger_window" address="0x1" description="package sample count "/>
+	    <node id="trigger_rate" address="0x2" description="trigger counts per second "/>
+	    <node id="trigger_threshold" address="0x3" description="trigger threshold in ADC counts "/>
+	    <node id="control_register" address="0x4" description="trigger threshold in ADC counts ">
+        <node id="soft_reset" mask="0x00000001" />
+        <node id="align_l1_cache" mask="0x00000002" />
+      </node>
+    </node>
+
+    <node id="ipbus_fifo_0" address="0x820"  description="IPBUS FIFO SLAVE" tags="slave8" fwinfo="endpoint;width=4"  >
+      <node id="data" address="0x0" mode="port" description="IPBUS FIFO DATA"  />
+      <node id="ctrl" address="0x1" >
+        <node id="lock" mask="0x00000001" />
+     </node>
+     <node id="status" address="0x2" >
+       <node id="empty" mask="0x00000001" />
+       <node id="valid" mask="0x00000002" />
+       <node id="count" mask="0xfffffffc" />
+     </node>
+     <node id="occupied" address="0x3"/>
+    </node>
+
+    <node id="ipbus_fifo_1" address="0x830"  description="IPBUS FIFO SLAVE" tags="slave8" fwinfo="endpoint;width=4"  >
+      <node id="data" address="0x0" mode="port" description="IPBUS FIFO DATA"  />
+      <node id="ctrl" address="0x1" >
+        <node id="lock" mask="0x00000001" />
+     </node>
+     <node id="status" address="0x2" >
+       <node id="empty" mask="0x00000001" />
+       <node id="valid" mask="0x00000002" />
+       <node id="count" mask="0xfffffffc" />
+     </node>
+     <node id="occupied" address="0x3"/>
+    </node>
+
+    <node id="ipbus_fifo_2" address="0x840"  description="IPBUS FIFO SLAVE" tags="slave8" fwinfo="endpoint;width=4"  >
+      <node id="data" address="0x0" mode="port" description="IPBUS FIFO DATA"  />
+      <node id="ctrl" address="0x1" >
+        <node id="lock" mask="0x00000001" />
+     </node>
+     <node id="status" address="0x2" >
+       <node id="empty" mask="0x00000001" />
+       <node id="valid" mask="0x00000002" />
+       <node id="count" mask="0xfffffffc" />
+     </node>
+     <node id="occupied" address="0x3"/>
+    </node>
+    <node id="ram" address="0x1000" mode="block" size="0x400" description="1kword RAM" fwinfo="endpoint;width=12"/>
+    <node id="adu_manager" address="0x850" description="adu manager" fwinfo="endpoint;width=2" tags="slave3">
+	    <node id="control_reg" address="0x0"  description="control register ">
+               <node id="threshold"        mask="0xffff0000" />
+               <node id="trigger_selector" mask="0x00008000" />
+               <node id="trigger_enable"   mask="0x00004000" />
+               <node id="force_trigger"    mask="0x00002000" />
+               <node id="enable_adu_0"     mask="0x00001000" />
+               <node id="enable_adu_1"     mask="0x00000800" />
+               <node id="enable_adu_2"     mask="0x00000400" />
+               <node id="enable_clock_adu_0"     mask="0x00000200" />
+               <node id="enable_clock_adu_1"     mask="0x00000100" />
+               <node id="enable_clock_adu_2"     mask="0x00000080" />
+     	    </node>
+	    <node id="status_reg" address="0x1" description="status register ">
+               <node id="firmware_version" mask="0xffff0000" />
+               <node id="config_ok_adu_0"  mask="0x00008000" />
+               <node id="config_ok_adu_1"  mask="0x00004000" />
+               <node id="config_ok_adu_2"  mask="0x00002000" />
+            </node>
+    </node>
+    <node id="test_reg" address="0x860" description="test" fwinfo="endpoint;width=2" />
+    <node id="counter" address="0x870" description="counter" fwinfo="endpoint;width=2">
+        <node id="read_counter" address="0x0" description="read" permission="r"/>
+        <node id="reset_counter" address="0x1" description="reset" permission="w"/>
+        <node id="inc_counter" address="0x2" description="increment" permission="w"/>
+        <node id="dec_counter" address="0x3" description="decrement" permission="w"/>
+    </node>
+     <node id="GPIO" address="0x2000" description="GPIOs" fwinfo="endpoint;width=1" tags="slave9">
+      <node id="zero" mask="0x00000001" />
+      <node id="one" mask="0x00000002"/>
+    </node>
+    <node id="DEBUG1" address="0x3000" description="DEBUG1" fwinfo="endpoint;width=1" tags="slave10">
+    </node>
+    <node id="DEBUG2" address="0x4000" description="DEBUG2" fwinfo="endpoint;width=1" tags="slave11">
+    </node>
+    <node id="user_data" address="0x950" mode="non-incremental"  description="read only registers" fwinfo="endpoint;width=2"/>
+</node>

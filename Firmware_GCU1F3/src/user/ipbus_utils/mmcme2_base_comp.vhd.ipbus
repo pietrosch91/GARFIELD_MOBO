@@ -1,0 +1,84 @@
+
+
+constant BANDWIDTH          : string  := "OPTIMIZED";
+constant CLKFBOUT_MULT_F    : real    := 5.000;
+constant CLKFBOUT_PHASE     : real    := 0.000;
+constant CLKIN1_PERIOD      : real    := 0.000;
+constant CLKOUT0_DIVIDE_F   : real    := 1.000;
+constant CLKOUT0_DUTY_CYCLE : real    := 0.500;
+constant CLKOUT0_PHASE      : real    := 0.000;
+constant CLKOUT1_DIVIDE     : integer := 1;
+constant CLKOUT1_DUTY_CYCLE : real    := 0.500;
+constant CLKOUT1_PHASE      : real    := 0.000;
+constant CLKOUT2_DIVIDE     : integer := 1;
+constant CLKOUT2_DUTY_CYCLE : real    := 0.500;
+constant CLKOUT2_PHASE      : real    := 0.000;
+constant CLKOUT3_DIVIDE     : integer := 1;
+constant CLKOUT3_DUTY_CYCLE : real    := 0.500;
+constant CLKOUT3_PHASE      : real    := 0.000;
+constant CLKOUT4_CASCADE    : boolean := false;
+constant CLKOUT4_DIVIDE     : integer := 1;
+constant CLKOUT4_DUTY_CYCLE : real    := 0.500;
+constant CLKOUT4_PHASE      : real    := 0.000;
+constant CLKOUT5_DIVIDE     : integer := 1;
+constant CLKOUT5_DUTY_CYCLE : real    := 0.500;
+constant CLKOUT5_PHASE      : real    := 0.000;
+constant CLKOUT6_DIVIDE     : integer := 1;
+constant CLKOUT6_DUTY_CYCLE : real    := 0.500;
+constant CLKOUT6_PHASE      : real    := 0.000;
+constant DIVCLK_DIVIDE      : integer := 1;
+constant REF_JITTER1        : real    := 0.010;
+constant STARTUP_WAIT       : boolean := false;
+
+component MMCME2_BASE
+  generic (
+    BANDWIDTH          : string;
+    CLKFBOUT_MULT_F    : real;
+    CLKFBOUT_PHASE     : real;
+    CLKIN1_PERIOD      : real;
+    CLKOUT0_DIVIDE_F   : real;
+    CLKOUT0_DUTY_CYCLE : real;
+    CLKOUT0_PHASE      : real;
+    CLKOUT1_DIVIDE     : integer;
+    CLKOUT1_DUTY_CYCLE : real;
+    CLKOUT1_PHASE      : real;
+    CLKOUT2_DIVIDE     : integer;
+    CLKOUT2_DUTY_CYCLE : real;
+    CLKOUT2_PHASE      : real;
+    CLKOUT3_DIVIDE     : integer;
+    CLKOUT3_DUTY_CYCLE : real;
+    CLKOUT3_PHASE      : real;
+    CLKOUT4_CASCADE    : boolean;
+    CLKOUT4_DIVIDE     : integer;
+    CLKOUT4_DUTY_CYCLE : real;
+    CLKOUT4_PHASE      : real;
+    CLKOUT5_DIVIDE     : integer;
+    CLKOUT5_DUTY_CYCLE : real;
+    CLKOUT5_PHASE      : real;
+    CLKOUT6_DIVIDE     : integer;
+    CLKOUT6_DUTY_CYCLE : real;
+    CLKOUT6_PHASE      : real;
+    DIVCLK_DIVIDE      : integer;
+    REF_JITTER1        : real;
+    STARTUP_WAIT       : boolean);
+  port (
+    CLKFBOUT  : out std_ulogic;
+    CLKFBOUTB : out std_ulogic;
+    CLKOUT0   : out std_ulogic;
+    CLKOUT0B  : out std_ulogic;
+    CLKOUT1   : out std_ulogic;
+    CLKOUT1B  : out std_ulogic;
+    CLKOUT2   : out std_ulogic;
+    CLKOUT2B  : out std_ulogic;
+    CLKOUT3   : out std_ulogic;
+    CLKOUT3B  : out std_ulogic;
+    CLKOUT4   : out std_ulogic;
+    CLKOUT5   : out std_ulogic;
+    CLKOUT6   : out std_ulogic;
+    LOCKED    : out std_ulogic;
+    -- Input port ( must be not open!)
+    CLKFBIN   : in  std_ulogic;
+    CLKIN1    : in  std_ulogic;
+    PWRDWN    : in  std_ulogic;
+    RST       : in  std_ulogic);
+end component;

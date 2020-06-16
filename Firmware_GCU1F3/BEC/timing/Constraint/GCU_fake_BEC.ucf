@@ -1,0 +1,88 @@
+##________________________GCU Attributes and Constraints_____________________##
+##Version: v0.0
+##Last modified: 15/09/2016
+##---------------------------------IPBUS------------------------------------##
+NET clk_base_xc7k_i LOC = Y22 | IOSTANDARD = LVCMOS25 | SLEW = FAST | TNM_NET = clk_base_xc7k_i;
+TIMESPEC TS_sysclk = PERIOD "clk_base_xc7k_i" 16 ns HIGH 50%;
+NET ipb_clk TNM_NET = tnm_ipb_clk;
+NET s_sysclk_x2 TNM_NET = tnm_clk125;
+TIMESPEC TS_tig_ipb_125 = FROM tnm_ipb_clk TO tnm_clk125 TIG;
+TIMESPEC TS_tig_125_ipb = FROM tnm_clk125 TO tnm_ipb_clk TIG;
+
+NET "clk_base_xc7k_i" CLOCK_DEDICATED_ROUTE = BACKBONE;
+
+NET mii_tx_clk_i LOC=E11 | IOSTANDARD=LVCMOS25 | SLEW=FAST;
+NET mii_txd_o<0> LOC=H12 | IOSTANDARD=LVCMOS25;
+NET mii_txd_o<1> LOC=J10 | IOSTANDARD=LVCMOS25;
+NET mii_txd_o<2> LOC=J11 | IOSTANDARD=LVCMOS25;
+NET mii_txd_o<3> LOC=G14 | IOSTANDARD=LVCMOS25;
+
+NET mii_tx_en_o LOC=H14 | IOSTANDARD=LVCMOS25;
+
+NET mii_rx_clk_i LOC=D23 | IOSTANDARD=LVCMOS25 | TNM_NET= "mii_rx_clk_i";
+
+NET mii_rxd_i<0> LOC=F9 | IOSTANDARD=LVCMOS25;
+NET mii_rxd_i<1> LOC=F14 | IOSTANDARD=LVCMOS25;
+NET mii_rxd_i<2> LOC=F13 | IOSTANDARD=LVCMOS25;
+NET mii_rxd_i<3> LOC=G12 | IOSTANDARD=LVCMOS25;
+NET mii_rx_dv_i LOC=H11 | IOSTANDARD=LVCMOS25;
+NET "mii_tx_clk_i" CLOCK_DEDICATED_ROUTE = FALSE;
+NET "mii_rx_clk_i" CLOCK_DEDICATED_ROUTE = FALSE;
+
+############################################################
+# RX Clock period Constraints                              #
+############################################################
+# Receiver clock period constraints: please do not relax
+NET "*mii_rx_clk_i" TNM_NET  = "clk_rx";
+TIMESPEC "TS_rx_clk" = PERIOD "clk_rx" 40000 ps HIGH 50 %;
+
+############################################################
+# TX Clock period Constraints                              #
+############################################################
+# Transmitter clock period constraints: please do not relax
+
+NET "mii_tx_clk_i" TNM_NET  = "clk_tx_mac";
+TIMESPEC "TS_tx_clk_mii" = PERIOD "clk_tx_mac" 40000 ps HIGH 50 %;
+
+NET clk_p_o[0] LOC = J26 | IOSTANDARD=LVDS_25;
+#NET clk_n_o[0] LOC = H26 | IOSTANDARD=LVDS_25;
+
+NET clk_p_o[1] LOC = N26 | IOSTANDARD=LVDS_25;
+#NET clk_n_o[1] LOC = M26 | IOSTANDARD=LVDS_25;
+
+NET clk_p_o[2] LOC = H23 | IOSTANDARD=LVDS_25;
+#NET clk_n_o[2] LOC = H23 | IOSTANDARD=LVDS_25;
+
+NET trg_p_i[0] LOC = T20 | IOSTANDARD=LVDS_25;
+#NET trg_n_i[0] LOC = K25 | IOSTANDARD=LVDS_25;
+
+NET trg_p_i[1] LOC = T22 | IOSTANDARD=LVDS_25;
+#NET trg_n_i[1] LOC = T23 | IOSTANDARD=LVDS_25;
+
+NET trg_p_i[2] LOC = A23 | IOSTANDARD=LVDS_25;
+#NET trg_n_i[2] LOC = A23 | IOSTANDARD=LVDS_25;
+
+NET "pulse_o" LOC = Y23; #PX7
+NET "pulse_o" IOSTANDARD = LVCMOS25;
+			
+NET "ext_trg_o" LOC = AA24; #PX8
+NET "ext_trg_o" IOSTANDARD = LVCMOS25;
+
+NET "gpio_led_o" LOC = AE20;
+NET "gpio_led_o" IOSTANDARD = LVCMOS15;
+
+#INST "Inst_ttc_encoder/IDELAYCTRL_inst" AREA_GROUP = "ttc_tx";
+#INST "Inst_ttc_encoder/IDELAYE2_1" AREA_GROUP = "ttc_tx";
+#INST "Inst_ttc_encoder/IDELAYE2_2" AREA_GROUP = "ttc_tx";
+#INST "Inst_ttc_encoder/IDELAYE2_3" AREA_GROUP = "ttc_tx";
+#INST "Inst_ttc_encoder/IDELAYE2_4" AREA_GROUP = "ttc_tx";
+#AREA_GROUP "ttc_tx" RANGE=CLOCKREGION_X0Y4;
+# the following line is mandatory; the location of at least one IDELAYCTRL tile must be constrained.
+#INST "Inst_ttc_encoder/IDELAYCTRL_inst" LOC = IDELAYCTRL_X0Y4;
+# these are optional; without these lines the IDELAY are placed in a clock region different from the
+# ttc_tx. If the Place&Route ends with timing errors, please comment-out these 4 lines:
+#INST "Inst_ttc_encoder/IDELAYE2_1" LOC = IDELAY_X0Y205;
+#INST "Inst_ttc_encoder/IDELAYE2_2" LOC = IDELAY_X0Y206;
+#INST "Inst_ttc_encoder/IDELAYE2_3" LOC = IDELAY_X0Y229;
+#INST "Inst_ttc_encoder/IDELAYE2_4" LOC = IDELAY_X0Y230;
+

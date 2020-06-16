@@ -1,0 +1,5 @@
+./server/InputThread.java
+./server/ErrBufferedReader.java
+./server/ReadVMEThread.java
+./server/CntrlServerThread.java
+./CntrlServer_GCU.java

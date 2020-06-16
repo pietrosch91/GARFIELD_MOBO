@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<connections>
+ <connection id="GCU1" uri="ipbusudp-2.0://10.10.10.100:50001" address_table="file://example_design.xml"/>
+ <connection id="GCU2" uri="ipbusudp-2.0://10.10.10.101:50001" address_table="file://example_design.xml"/>
+ <connection id="GCU3" uri="ipbusudp-2.0://10.10.10.102:50001" address_table="file://example_design.xml"/>
+ <connection id="BEC" uri="ipbusudp-2.0://10.10.10.1:50001" address_table="file://BEC_example_design.xml"/>
+</connections>
+

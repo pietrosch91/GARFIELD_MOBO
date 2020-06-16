@@ -1,0 +1,1286 @@
+          sja_config:
+                      CALL SPI_enable
+                      CALL delay_60
+
+                      LOAD sd, 80
+                      LOAD sc, 20
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 9e
+                      LOAD sc, 00
+                      LOAD sb, 03
+                      LOAD sa, 0e
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 06
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 50
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 21
+                      LOAD sc, 6f
+                      LOAD sb, 25
+                      LOAD sa, 6b
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 03
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 03
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 03
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 03
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 03
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 03
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 03
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 03
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0b
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0b
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0b
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0b
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0b
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0b
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0b
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0b
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0f
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0f
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0f
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0f
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0f
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0f
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      CALL SPI_disable
+                      CALL delay_60
+                      CALL SPI_enable
+                      CALL delay_60
+                      LOAD sd, 80
+                      LOAD sc, 20
+                      LOAD sb, 04
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0f
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0f
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 13
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 13
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 13
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 13
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 13
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 13
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 13
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fe
+                      LOAD sc, f7
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 13
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, fa
+                      LOAD sc, 2e
+                      LOAD sb, 19
+                      LOAD sa, f8
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 04
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 58
+                      LOAD sc, 60
+                      LOAD sb, 94
+                      LOAD sa, 2e
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 3f
+                      LOAD sb, f0
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 08
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 3f
+                      LOAD sb, ff
+                      LOAD sa, 80
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, c7
+                      LOAD sc, ef
+                      LOAD sb, 16
+                      LOAD sa, a7
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 08
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 1a
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 6a
+                      LOAD sc, f6
+                      LOAD sb, 23
+                      LOAD sa, 53
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 10
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, f7
+                      LOAD sc, bd
+                      LOAD sb, f5
+                      LOAD sa, 8d
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 10
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, ef
+                      LOAD sc, 7b
+                      LOAD sb, f5
+                      LOAD sa, 8d
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 10
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, de
+                      LOAD sc, f7
+                      LOAD sb, f5
+                      LOAD sa, 8d
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 10
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, bd
+                      LOAD sc, ef
+                      LOAD sb, f5
+                      LOAD sa, 8d
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 10
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 7b
+                      LOAD sc, df
+                      LOAD sb, f5
+                      LOAD sa, 8d
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, c0
+                      LOAD sc, 04
+                      LOAD sb, a6
+                      LOAD sa, 06
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 09
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 23
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, da
+                      LOAD sc, b5
+                      LOAD sb, bd
+                      LOAD sa, c8
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 0e
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      CALL SPI_disable
+                      CALL delay_60
+                      CALL SPI_enable
+                      CALL delay_60
+                      LOAD sd, 80
+                      LOAD sc, 20
+                      LOAD sb, 08
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, fc
+                      LOAD sb, 01
+                      LOAD sa, 02
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 0e
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, fc
+                      LOAD sb, 01
+                      LOAD sa, 02
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 0e
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, fc
+                      LOAD sb, 01
+                      LOAD sa, 02
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 0e
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, fc
+                      LOAD sb, 01
+                      LOAD sa, 02
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 0e
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 07
+                      LOAD sc, fc
+                      LOAD sb, 01
+                      LOAD sa, 02
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 53
+                      LOAD sc, 20
+                      LOAD sb, 87
+                      LOAD sa, 9e
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0d
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 01
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 25
+                      LOAD sc, 0e
+                      LOAD sb, 7c
+                      LOAD sa, bd
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 01
+                      LOAD sb, 25
+                      LOAD sa, c0
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 70
+                      LOAD sc, 94
+                      LOAD sb, 84
+                      LOAD sa, 50
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 0e
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 03
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, c8
+                      LOAD sc, a7
+                      LOAD sb, ce
+                      LOAD sa, e6
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 71
+                      LOAD sb, c0
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, c3
+                      LOAD sc, f7
+                      LOAD sb, 04
+                      LOAD sa, b9
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 11
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 0a
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 57
+                      LOAD sc, 1f
+                      LOAD sb, 81
+                      LOAD sa, 3f
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 06
+                      LOAD sc, 44
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 04
+                      LOAD sa, 08
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, ff
+                      LOAD sc, 0d
+                      LOAD sb, a0
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, ff
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, ff
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, ff
+                      LOAD sb, ff
+                      LOAD sa, ff
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 58
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 04
+                      LOAD sc, e8
+                      LOAD sb, 9c
+                      LOAD sa, 75
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 4e
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 01
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 3a
+                      LOAD sc, 5d
+                      LOAD sb, 5e
+                      LOAD sa, 24
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 5b
+                      LOAD sc, 24
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      CALL SPI_disable
+                      CALL delay_60
+                      CALL SPI_enable
+                      CALL delay_60
+                      LOAD sd, 80
+                      LOAD sc, 20
+                      LOAD sb, 0c
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 2c
+                      LOAD sc, 15
+                      LOAD sb, b6
+                      LOAD sa, c6
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, 00
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      LOAD sd, df
+                      LOAD sc, 65
+                      LOAD sb, aa
+                      LOAD sa, 65
+                      CALL SPI_32_bit_tx_rx
+                      CALL delay_60
+                      CALL SPI_disable
+                      CALL delay_60
+                      RETURN
+            delay_60:
+                      CALL DTREE_f6_0001_9           ; Delay for 1025 cycles
+                      JUMP DTREE_f6_0001_end
+     DTREE_f6_0001_9: CALL DTREE_f6_0001_8
+     DTREE_f6_0001_8: CALL DTREE_f6_0001_7
+     DTREE_f6_0001_7: CALL DTREE_f6_0001_6
+     DTREE_f6_0001_6: CALL DTREE_f6_0001_5
+     DTREE_f6_0001_5: CALL DTREE_f6_0001_4
+     DTREE_f6_0001_4: CALL DTREE_f6_0001_3
+     DTREE_f6_0001_3: CALL DTREE_f6_0001_2
+     DTREE_f6_0001_2: CALL DTREE_f6_0001_1
+     DTREE_f6_0001_1: CALL DTREE_f6_0001_0
+     DTREE_f6_0001_0: RETURN
+   DTREE_f6_0001_end:
+                      CALL DTREE_f6_0002_8           ; Delay for 513 cycles
+                      JUMP DTREE_f6_0002_end
+     DTREE_f6_0002_8: CALL DTREE_f6_0002_7
+     DTREE_f6_0002_7: CALL DTREE_f6_0002_6
+     DTREE_f6_0002_6: CALL DTREE_f6_0002_5
+     DTREE_f6_0002_5: CALL DTREE_f6_0002_4
+     DTREE_f6_0002_4: CALL DTREE_f6_0002_3
+     DTREE_f6_0002_3: CALL DTREE_f6_0002_2
+     DTREE_f6_0002_2: CALL DTREE_f6_0002_1
+     DTREE_f6_0002_1: CALL DTREE_f6_0002_0
+     DTREE_f6_0002_0: RETURN
+   DTREE_f6_0002_end:
+                      CALL DTREE_f6_0003_7           ; Delay for 257 cycles
+                      JUMP DTREE_f6_0003_end
+     DTREE_f6_0003_7: CALL DTREE_f6_0003_6
+     DTREE_f6_0003_6: CALL DTREE_f6_0003_5
+     DTREE_f6_0003_5: CALL DTREE_f6_0003_4
+     DTREE_f6_0003_4: CALL DTREE_f6_0003_3
+     DTREE_f6_0003_3: CALL DTREE_f6_0003_2
+     DTREE_f6_0003_2: CALL DTREE_f6_0003_1
+     DTREE_f6_0003_1: CALL DTREE_f6_0003_0
+     DTREE_f6_0003_0: RETURN
+   DTREE_f6_0003_end:
+                      CALL DTREE_f6_0004_6           ; Delay for 129 cycles
+                      JUMP DTREE_f6_0004_end
+     DTREE_f6_0004_6: CALL DTREE_f6_0004_5
+     DTREE_f6_0004_5: CALL DTREE_f6_0004_4
+     DTREE_f6_0004_4: CALL DTREE_f6_0004_3
+     DTREE_f6_0004_3: CALL DTREE_f6_0004_2
+     DTREE_f6_0004_2: CALL DTREE_f6_0004_1
+     DTREE_f6_0004_1: CALL DTREE_f6_0004_0
+     DTREE_f6_0004_0: RETURN
+   DTREE_f6_0004_end:
+                      CALL DTREE_f6_0005_5           ; Delay for 65 cycles
+                      JUMP DTREE_f6_0005_end
+     DTREE_f6_0005_5: CALL DTREE_f6_0005_4
+     DTREE_f6_0005_4: CALL DTREE_f6_0005_3
+     DTREE_f6_0005_3: CALL DTREE_f6_0005_2
+     DTREE_f6_0005_2: CALL DTREE_f6_0005_1
+     DTREE_f6_0005_1: CALL DTREE_f6_0005_0
+     DTREE_f6_0005_0: RETURN
+   DTREE_f6_0005_end:
+                      CALL DTREE_f6_0006_2           ; Delay for 9 cycles
+                      JUMP DTREE_f6_0006_end
+     DTREE_f6_0006_2: CALL DTREE_f6_0006_1
+     DTREE_f6_0006_1: CALL DTREE_f6_0006_0
+     DTREE_f6_0006_0: RETURN
+   DTREE_f6_0006_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      RETURN
+

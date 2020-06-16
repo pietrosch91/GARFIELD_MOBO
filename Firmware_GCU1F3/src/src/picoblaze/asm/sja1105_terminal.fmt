@@ -1,0 +1,390 @@
+                      ;== PREAMBLE
+                      JUMP main
+                      ;REMOVED: JUMP main
+                      ;REMOVED: JUMP main
+                      ;REMOVED: JUMP main
+                      INCLUDE "uart_interface_routines.asm"
+                      INCLUDE "spi_routines.asm"
+                      INCLUDE "software_delays.asm"
+                      INCLUDE "scratchpad_manager.asm"
+                      INCLUDE "sja_config.asm"
+
+                      STRING welcome_str$, "<* GCU 1F3 SJA1150 switch programming terminal *>"
+                      STRING command_sel_str$, "CMD>"
+
+     welcome_message:
+                      LOAD&RETURN s5, welcome_str$
+                      LOAD&RETURN s5, CR
+                      LOAD&RETURN s5, NUL
+
+ command_sel_message:
+                      LOAD&RETURN s5, command_sel_str$
+                      LOAD&RETURN s5, CR
+                      LOAD&RETURN s5, NUL
+
+     SPI_send_32_bit:
+                      LOAD se, 8                     ; 8 digits to acquire
+                      CALL obtain_value
+                      CALL SPI_32_bit_tx_rx
+                      CALL store_reg_in_first_slot
+                      CALL send_CR
+                      CALL send_NL
+                      LOAD s5, "R"
+                      CALL UART_TX
+                      CALL send_32_bit
+                      RETURN
+
+ write_clock_registers:
+                      ;; 	w81 00 02 40 0B 00 00 00
+                      LOAD sd, 81
+                      LOAD sc, 00
+                      LOAD sb, 02
+                      LOAD sa, 40
+                      CALL store_reg_in_first_slot
+                      LOAD sd, 0B
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL store_reg_in_second_slot
+                      CALL SPI_send_64bit_nouart
+
+                      ;; 	w81 00 02 B0 0B 00 00 00
+                      LOAD sd, 81
+                      LOAD sc, 00
+                      LOAD sb, 02
+                      LOAD sa, B0
+                      CALL store_reg_in_first_slot
+                      LOAD sd, 0B
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL store_reg_in_second_slot
+                      CALL SPI_send_64bit_nouart
+
+                      ;; 	w81 00 03 20 0B 00 00 00
+                      LOAD sd, 81
+                      LOAD sc, 00
+                      LOAD sb, 03
+                      LOAD sa, 20
+                      CALL store_reg_in_first_slot
+                      LOAD sd, 0B
+                      LOAD sc, 00
+                      LOAD sb, 00
+                      LOAD sa, 00
+                      CALL store_reg_in_second_slot
+                      CALL SPI_send_64bit_nouart
+                      RETURN
+
+
+ SPI_send_64bit_nouart:
+                      CALL fetch_reg_in_first_slot
+                      CALL SPI_enable
+                      CALL DTREE_f1_0001_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0001_end
+     DTREE_f1_0001_3: CALL DTREE_f1_0001_2
+     DTREE_f1_0001_2: CALL DTREE_f1_0001_1
+     DTREE_f1_0001_1: CALL DTREE_f1_0001_0
+     DTREE_f1_0001_0: RETURN
+   DTREE_f1_0001_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0002_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0002_end
+     DTREE_f1_0002_3: CALL DTREE_f1_0002_2
+     DTREE_f1_0002_2: CALL DTREE_f1_0002_1
+     DTREE_f1_0002_1: CALL DTREE_f1_0002_0
+     DTREE_f1_0002_0: RETURN
+   DTREE_f1_0002_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0003_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0003_end
+     DTREE_f1_0003_3: CALL DTREE_f1_0003_2
+     DTREE_f1_0003_2: CALL DTREE_f1_0003_1
+     DTREE_f1_0003_1: CALL DTREE_f1_0003_0
+     DTREE_f1_0003_0: RETURN
+   DTREE_f1_0003_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL SPI_32_bit_tx_rx
+                      CALL fetch_reg_in_second_slot
+                      CALL DTREE_f1_0004_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0004_end
+     DTREE_f1_0004_3: CALL DTREE_f1_0004_2
+     DTREE_f1_0004_2: CALL DTREE_f1_0004_1
+     DTREE_f1_0004_1: CALL DTREE_f1_0004_0
+     DTREE_f1_0004_0: RETURN
+   DTREE_f1_0004_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0005_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0005_end
+     DTREE_f1_0005_3: CALL DTREE_f1_0005_2
+     DTREE_f1_0005_2: CALL DTREE_f1_0005_1
+     DTREE_f1_0005_1: CALL DTREE_f1_0005_0
+     DTREE_f1_0005_0: RETURN
+   DTREE_f1_0005_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0006_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0006_end
+     DTREE_f1_0006_3: CALL DTREE_f1_0006_2
+     DTREE_f1_0006_2: CALL DTREE_f1_0006_1
+     DTREE_f1_0006_1: CALL DTREE_f1_0006_0
+     DTREE_f1_0006_0: RETURN
+   DTREE_f1_0006_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL SPI_32_bit_tx_rx
+                      CALL DTREE_f1_0007_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0007_end
+     DTREE_f1_0007_3: CALL DTREE_f1_0007_2
+     DTREE_f1_0007_2: CALL DTREE_f1_0007_1
+     DTREE_f1_0007_1: CALL DTREE_f1_0007_0
+     DTREE_f1_0007_0: RETURN
+   DTREE_f1_0007_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0008_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0008_end
+     DTREE_f1_0008_3: CALL DTREE_f1_0008_2
+     DTREE_f1_0008_2: CALL DTREE_f1_0008_1
+     DTREE_f1_0008_1: CALL DTREE_f1_0008_0
+     DTREE_f1_0008_0: RETURN
+   DTREE_f1_0008_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0009_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0009_end
+     DTREE_f1_0009_3: CALL DTREE_f1_0009_2
+     DTREE_f1_0009_2: CALL DTREE_f1_0009_1
+     DTREE_f1_0009_1: CALL DTREE_f1_0009_0
+     DTREE_f1_0009_0: RETURN
+   DTREE_f1_0009_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL SPI_disable
+                      RETURN
+
+      SPI_send_64bit:
+                      LOAD se, 8                     ; 8 digits to acquire
+                      CALL obtain_value
+                      CALL store_reg_in_first_slot
+                      LOAD se, 8                     ; 8 digits to acquire
+                      CALL obtain_value
+                      CALL store_reg_in_second_slot
+                      ;;  prepare Register set to be sent via SPI
+                      CALL fetch_reg_in_first_slot
+                      CALL SPI_enable
+                      CALL DTREE_f1_0010_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0010_end
+     DTREE_f1_0010_3: CALL DTREE_f1_0010_2
+     DTREE_f1_0010_2: CALL DTREE_f1_0010_1
+     DTREE_f1_0010_1: CALL DTREE_f1_0010_0
+     DTREE_f1_0010_0: RETURN
+   DTREE_f1_0010_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0011_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0011_end
+     DTREE_f1_0011_3: CALL DTREE_f1_0011_2
+     DTREE_f1_0011_2: CALL DTREE_f1_0011_1
+     DTREE_f1_0011_1: CALL DTREE_f1_0011_0
+     DTREE_f1_0011_0: RETURN
+   DTREE_f1_0011_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0012_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0012_end
+     DTREE_f1_0012_3: CALL DTREE_f1_0012_2
+     DTREE_f1_0012_2: CALL DTREE_f1_0012_1
+     DTREE_f1_0012_1: CALL DTREE_f1_0012_0
+     DTREE_f1_0012_0: RETURN
+   DTREE_f1_0012_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL SPI_32_bit_tx_rx
+                      CALL store_reg_in_first_slot
+                      CALL fetch_reg_in_second_slot
+                      CALL DTREE_f1_0013_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0013_end
+     DTREE_f1_0013_3: CALL DTREE_f1_0013_2
+     DTREE_f1_0013_2: CALL DTREE_f1_0013_1
+     DTREE_f1_0013_1: CALL DTREE_f1_0013_0
+     DTREE_f1_0013_0: RETURN
+   DTREE_f1_0013_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0014_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0014_end
+     DTREE_f1_0014_3: CALL DTREE_f1_0014_2
+     DTREE_f1_0014_2: CALL DTREE_f1_0014_1
+     DTREE_f1_0014_1: CALL DTREE_f1_0014_0
+     DTREE_f1_0014_0: RETURN
+   DTREE_f1_0014_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0015_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0015_end
+     DTREE_f1_0015_3: CALL DTREE_f1_0015_2
+     DTREE_f1_0015_2: CALL DTREE_f1_0015_1
+     DTREE_f1_0015_1: CALL DTREE_f1_0015_0
+     DTREE_f1_0015_0: RETURN
+   DTREE_f1_0015_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL SPI_32_bit_tx_rx
+                      CALL store_reg_in_second_slot
+                      CALL DTREE_f1_0016_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0016_end
+     DTREE_f1_0016_3: CALL DTREE_f1_0016_2
+     DTREE_f1_0016_2: CALL DTREE_f1_0016_1
+     DTREE_f1_0016_1: CALL DTREE_f1_0016_0
+     DTREE_f1_0016_0: RETURN
+   DTREE_f1_0016_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0017_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0017_end
+     DTREE_f1_0017_3: CALL DTREE_f1_0017_2
+     DTREE_f1_0017_2: CALL DTREE_f1_0017_1
+     DTREE_f1_0017_1: CALL DTREE_f1_0017_0
+     DTREE_f1_0017_0: RETURN
+   DTREE_f1_0017_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL DTREE_f1_0018_3           ; Delay for 17 cycles
+                      JUMP DTREE_f1_0018_end
+     DTREE_f1_0018_3: CALL DTREE_f1_0018_2
+     DTREE_f1_0018_2: CALL DTREE_f1_0018_1
+     DTREE_f1_0018_1: CALL DTREE_f1_0018_0
+     DTREE_f1_0018_0: RETURN
+   DTREE_f1_0018_end:
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+                      LOAD se, se                    ; NOP
+
+                      CALL SPI_disable
+                      CALL send_CR
+                      CALL send_NL
+                      LOAD s5, "r"
+                      CALL UART_TX
+                      CALL send_64_bit
+                      CALL send_CR
+                      CALL send_NL
+                      RETURN
+
+       dummy_routine:
+                      ;REMOVED: RETURN
+
+          cold_start:
+                      ;REMOVED: CALL delay_1s                  ;
+                      ;REMOVED: CALL reset_UART_macros         ;Reset buffers in UART macros
+
+                      ;=============================
+                      ;== MAIN APPLICATION CODE
+                main:
+                      CALL delay_1s
+                      CALL clear_screen
+                      CALL cursor_home
+                      LOAD sb, welcome_message'upper
+                      LOAD sa, welcome_message'lower
+                      CALL send_message
+                      CALL send_CR
+                      CALL send_NL
+                      CALL SPI_disable
+                      ;;  sja1105 send configuration to ..
+                      CALL sja_config
+                      ;; write clock registers
+                      CALL delay_60
+                      CALL write_clock_registers
+
+           main_loop:
+                      CALL send_CR
+                      CALL send_NL
+                      LOAD sb, command_sel_message'upper
+                      LOAD sa, command_sel_message'lower
+                      CALL send_message
+                      CALL send_CR
+                      CALL send_NL
+
+                      ;;  SPI operation selection
+
+
+
+                      CALL obtain_char
+                      COMPARE s5, "["
+                      CALL z, SPI_enable
+
+                      COMPARE s5, "W"
+                      CALL z, SPI_send_32_bit
+
+                      COMPARE s5, "]"
+                      CALL z, SPI_disable
+
+                      COMPARE s5, "w"
+                      CALL z, SPI_send_64bit
+
+                      COMPARE s5, "g"
+                      CALL z, sja_config
+
+                      ;; compare s5, "r"
+                      ;;	call z, sja_prog_regs
+
+                      JUMP main_loop
+                      ;REMOVED: JUMP main
+                      ;; ------------------------------------
+
+
+                      ;;  acquire 8 chars from uart
+                      ;;  tx echo of each one
+                      ;;  send to spi the 32 bit
+                      ;;;
+
+
+
+                      ;=============================
+                      ;== SPECIAL CODE
+
+                      ; Guard to avoid falling into the ISR code.
+                      ; All unused memory jumps into this loop.
+                      ; You could also try to recover or restart.
+                      DEFAULT_JUMP fatal_error
+         fatal_error: JUMP fatal_error               ; Infinite loop
+
+
+

@@ -1,0 +1,15 @@
+#!/bin/bash
+#**** SERVER *****
+echo DOING_SERVER
+javac @server_sources.txt
+cd server
+jar cvf server_GCU.jar *.class
+cd ..
+echo DONE_SERVER
+
+echo DOING_CLIENT
+javac @client_sources.txt
+cd client
+jar cvf client_GCU.jar *.class
+cd ..
+echo DONE_CLIENT
