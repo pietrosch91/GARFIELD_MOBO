@@ -17,25 +17,26 @@ package ipbus_decode_gcu1f3 is
   subtype ipbus_sel_t is std_logic_vector(IPBUS_SEL_WIDTH - 1 downto 0);
   function ipbus_sel_gcu1f3(addr : in std_logic_vector(31 downto 0)) return ipbus_sel_t;
 
--- START automatically  generated VHDL the Fri Jun 12 16:19:28 2020 
-  constant N_SLV_MEM_BLK: integer := 0;
-  constant N_SLV_DSP_SIM: integer := 1;
-  constant N_SLV_TRIGGER_MANAGER: integer := 2;
-  constant N_SLV_IPBUS_FIFO_0: integer := 3;
-  constant N_SLV_IPBUS_FIFO_1: integer := 4;
-  constant N_SLV_IPBUS_FIFO_2: integer := 5;
-  constant N_SLV_ADU_MANAGER: integer := 6;
-  constant N_SLV_TEST_REG: integer := 7;
-  constant N_SLV_COUNTER: integer := 8;
-  constant N_SLV_L1_CACHE_0: integer := 9;
-  constant N_SLV_L1_CACHE_1: integer := 10;
-  constant N_SLV_L1_CACHE_2: integer := 11;
-  constant N_SLV_USER_DATA: integer := 12;
-  constant N_SLV_RAM: integer := 13;
-  constant N_SLV_GPIO: integer := 14;
-  constant N_SLV_DEBUG1: integer := 15;
-  constant N_SLV_DEBUG2: integer := 16;
-  constant N_SLAVES: integer := 17;
+-- START automatically  generated VHDL the Wed Jun 17 13:49:40 2020 
+  constant N_SLV_DSP_IFACE_CTRL: integer := 0;
+  constant N_SLV_MEM_BLK: integer := 1;
+  constant N_SLV_DSP_SIM: integer := 2;
+  constant N_SLV_TRIGGER_MANAGER: integer := 3;
+  constant N_SLV_IPBUS_FIFO_0: integer := 4;
+  constant N_SLV_IPBUS_FIFO_1: integer := 5;
+  constant N_SLV_IPBUS_FIFO_2: integer := 6;
+  constant N_SLV_ADU_MANAGER: integer := 7;
+  constant N_SLV_TEST_REG: integer := 8;
+  constant N_SLV_COUNTER: integer := 9;
+  constant N_SLV_L1_CACHE_0: integer := 10;
+  constant N_SLV_L1_CACHE_1: integer := 11;
+  constant N_SLV_L1_CACHE_2: integer := 12;
+  constant N_SLV_USER_DATA: integer := 13;
+  constant N_SLV_RAM: integer := 14;
+  constant N_SLV_GPIO: integer := 15;
+  constant N_SLV_DEBUG1: integer := 16;
+  constant N_SLV_DEBUG2: integer := 17;
+  constant N_SLAVES: integer := 18;
 -- END automatically generated VHDL
 
     
@@ -47,8 +48,10 @@ package body ipbus_decode_gcu1f3 is
     variable sel: ipbus_sel_t;
   begin
 
--- START automatically  generated VHDL the Fri Jun 12 16:19:28 2020 
-    if    std_match(addr, "-----------------0000111000-----") then
+-- START automatically  generated VHDL the Wed Jun 17 13:49:40 2020 
+    if    std_match(addr, "-----------------00001100000----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_DSP_IFACE_CTRL, IPBUS_SEL_WIDTH)); -- dsp_iface_ctrl / base 0x00000600 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------0000111000-----") then
       sel := ipbus_sel_t(to_unsigned(N_SLV_MEM_BLK, IPBUS_SEL_WIDTH)); -- mem_blk / base 0x00000700 / mask 0x00007fe0
     elsif std_match(addr, "-----------------00001110010----") then
       sel := ipbus_sel_t(to_unsigned(N_SLV_DSP_SIM, IPBUS_SEL_WIDTH)); -- dsp_sim / base 0x00000720 / mask 0x00007ff0

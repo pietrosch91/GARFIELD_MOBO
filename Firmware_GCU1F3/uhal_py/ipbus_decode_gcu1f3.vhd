@@ -13,26 +13,30 @@ use ieee.numeric_std.all;
 
 package ipbus_decode_gcu1f3 is
 
-  constant IPBUS_SEL_WIDTH: positive := 4;
+  constant IPBUS_SEL_WIDTH: positive := 5;
   subtype ipbus_sel_t is std_logic_vector(IPBUS_SEL_WIDTH - 1 downto 0);
   function ipbus_sel_gcu1f3(addr : in std_logic_vector(31 downto 0)) return ipbus_sel_t;
 
--- START automatically  generated VHDL the Thu Jun  4 16:40:22 2020 
-  constant N_SLV_TRIGGER_MANAGER: integer := 0;
-  constant N_SLV_IPBUS_FIFO_0: integer := 1;
-  constant N_SLV_IPBUS_FIFO_1: integer := 2;
-  constant N_SLV_IPBUS_FIFO_2: integer := 3;
-  constant N_SLV_ADU_MANAGER: integer := 4;
-  constant N_SLV_TEST_REG: integer := 5;
-  constant N_SLV_L1_CACHE_0: integer := 6;
-  constant N_SLV_L1_CACHE_1: integer := 7;
-  constant N_SLV_L1_CACHE_2: integer := 8;
-  constant N_SLV_USER_DATA: integer := 9;
-  constant N_SLV_RAM: integer := 10;
-  constant N_SLV_GPIO: integer := 11;
-  constant N_SLV_DEBUG1: integer := 12;
-  constant N_SLV_DEBUG2: integer := 13;
-  constant N_SLAVES: integer := 14;
+-- START automatically  generated VHDL the Wed Jun 17 08:59:29 2020 
+  constant N_SLV_DSP_IFACE_CTRL: integer := 0;
+  constant N_SLV_MEM_BLK: integer := 1;
+  constant N_SLV_DSP_SIM: integer := 2;
+  constant N_SLV_TRIGGER_MANAGER: integer := 3;
+  constant N_SLV_IPBUS_FIFO_0: integer := 4;
+  constant N_SLV_IPBUS_FIFO_1: integer := 5;
+  constant N_SLV_IPBUS_FIFO_2: integer := 6;
+  constant N_SLV_ADU_MANAGER: integer := 7;
+  constant N_SLV_TEST_REG: integer := 8;
+  constant N_SLV_COUNTER: integer := 9;
+  constant N_SLV_L1_CACHE_0: integer := 10;
+  constant N_SLV_L1_CACHE_1: integer := 11;
+  constant N_SLV_L1_CACHE_2: integer := 12;
+  constant N_SLV_USER_DATA: integer := 13;
+  constant N_SLV_RAM: integer := 14;
+  constant N_SLV_GPIO: integer := 15;
+  constant N_SLV_DEBUG1: integer := 16;
+  constant N_SLV_DEBUG2: integer := 17;
+  constant N_SLAVES: integer := 18;
 -- END automatically generated VHDL
 
     
@@ -44,35 +48,43 @@ package body ipbus_decode_gcu1f3 is
     variable sel: ipbus_sel_t;
   begin
 
--- START automatically  generated VHDL the Thu Jun  4 16:40:22 2020 
-    if    std_match(addr, "-----------------0001--00000----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_TRIGGER_MANAGER, IPBUS_SEL_WIDTH)); -- trigger_manager / base 0x00000800 / mask 0x000079f0
-    elsif std_match(addr, "-----------------0001--00010----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_IPBUS_FIFO_0, IPBUS_SEL_WIDTH)); -- ipbus_fifo_0 / base 0x00000820 / mask 0x000079f0
-    elsif std_match(addr, "-----------------0001--00011----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_IPBUS_FIFO_1, IPBUS_SEL_WIDTH)); -- ipbus_fifo_1 / base 0x00000830 / mask 0x000079f0
-    elsif std_match(addr, "-----------------0001--00100----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_IPBUS_FIFO_2, IPBUS_SEL_WIDTH)); -- ipbus_fifo_2 / base 0x00000840 / mask 0x000079f0
-    elsif std_match(addr, "-----------------0001--00101----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_ADU_MANAGER, IPBUS_SEL_WIDTH)); -- adu_manager / base 0x00000850 / mask 0x000079f0
-    elsif std_match(addr, "-----------------0001--00110----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_TEST_REG, IPBUS_SEL_WIDTH)); -- test_reg / base 0x00000860 / mask 0x000079f0
-    elsif std_match(addr, "-----------------0001--01000----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_L1_CACHE_0, IPBUS_SEL_WIDTH)); -- l1_cache_0 / base 0x00000880 / mask 0x000079f0
-    elsif std_match(addr, "-----------------0001--01001----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_L1_CACHE_1, IPBUS_SEL_WIDTH)); -- l1_cache_1 / base 0x00000890 / mask 0x000079f0
-    elsif std_match(addr, "-----------------0001--10000----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_L1_CACHE_2, IPBUS_SEL_WIDTH)); -- l1_cache_2 / base 0x00000900 / mask 0x000079f0
-    elsif std_match(addr, "-----------------0001--10101----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_USER_DATA, IPBUS_SEL_WIDTH)); -- user_data / base 0x00000950 / mask 0x000079f0
+-- START automatically  generated VHDL the Wed Jun 17 08:59:29 2020 
+    if    std_match(addr, "-----------------00001100000----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_DSP_IFACE_CTRL, IPBUS_SEL_WIDTH)); -- dsp_iface_ctrl / base 0x00000600 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------0000111000-----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_MEM_BLK, IPBUS_SEL_WIDTH)); -- mem_blk / base 0x00000700 / mask 0x00007fe0
+    elsif std_match(addr, "-----------------00001110010----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_DSP_SIM, IPBUS_SEL_WIDTH)); -- dsp_sim / base 0x00000720 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010000000----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_TRIGGER_MANAGER, IPBUS_SEL_WIDTH)); -- trigger_manager / base 0x00000800 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010000010----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_IPBUS_FIFO_0, IPBUS_SEL_WIDTH)); -- ipbus_fifo_0 / base 0x00000820 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010000011----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_IPBUS_FIFO_1, IPBUS_SEL_WIDTH)); -- ipbus_fifo_1 / base 0x00000830 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010000100----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_IPBUS_FIFO_2, IPBUS_SEL_WIDTH)); -- ipbus_fifo_2 / base 0x00000840 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010000101----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_ADU_MANAGER, IPBUS_SEL_WIDTH)); -- adu_manager / base 0x00000850 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010000110----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_TEST_REG, IPBUS_SEL_WIDTH)); -- test_reg / base 0x00000860 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010000111----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_COUNTER, IPBUS_SEL_WIDTH)); -- counter / base 0x00000870 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010001000----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_L1_CACHE_0, IPBUS_SEL_WIDTH)); -- l1_cache_0 / base 0x00000880 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010001001----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_L1_CACHE_1, IPBUS_SEL_WIDTH)); -- l1_cache_1 / base 0x00000890 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010010000----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_L1_CACHE_2, IPBUS_SEL_WIDTH)); -- l1_cache_2 / base 0x00000900 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------00010010101----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_USER_DATA, IPBUS_SEL_WIDTH)); -- user_data / base 0x00000950 / mask 0x00007ff0
     elsif std_match(addr, "-----------------001------------") then
       sel := ipbus_sel_t(to_unsigned(N_SLV_RAM, IPBUS_SEL_WIDTH)); -- ram / base 0x00001000 / mask 0x00007000
-    elsif std_match(addr, "-----------------0100--00000----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_GPIO, IPBUS_SEL_WIDTH)); -- GPIO / base 0x00002000 / mask 0x000079f0
-    elsif std_match(addr, "-----------------0110--00000----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_DEBUG1, IPBUS_SEL_WIDTH)); -- DEBUG1 / base 0x00003000 / mask 0x000079f0
-    elsif std_match(addr, "-----------------1000--00000----") then
-      sel := ipbus_sel_t(to_unsigned(N_SLV_DEBUG2, IPBUS_SEL_WIDTH)); -- DEBUG2 / base 0x00004000 / mask 0x000079f0
+    elsif std_match(addr, "-----------------01000000000----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_GPIO, IPBUS_SEL_WIDTH)); -- GPIO / base 0x00002000 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------01100000000----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_DEBUG1, IPBUS_SEL_WIDTH)); -- DEBUG1 / base 0x00003000 / mask 0x00007ff0
+    elsif std_match(addr, "-----------------10000000000----") then
+      sel := ipbus_sel_t(to_unsigned(N_SLV_DEBUG2, IPBUS_SEL_WIDTH)); -- DEBUG2 / base 0x00004000 / mask 0x00007ff0
 -- END automatically generated VHDL
 
     else

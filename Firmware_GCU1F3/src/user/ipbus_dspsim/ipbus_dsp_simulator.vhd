@@ -27,6 +27,8 @@ entity dsp_simulator is
         ipb_rst             : in  std_logic;        
         ipbus_in            : in  ipb_wbus;
         ipbus_out           : out ipb_rbus;
+        --bus dir
+        bus_ctrl            :out std_logic;
         --external interface
         nIACK: out std_logic;
         nWR: in std_logic;
@@ -58,7 +60,10 @@ architecture rtl of dsp_simulator is
     --dsp
     signal nIACK_i: std_logic;
     
+    signal dsp_res : std_logic;
+    
 begin
+    bus_ctrl<=DSP_busctrl;
     --IPBUS ALLOCATION
     ipbus_slave_1 : entity work.ipbus_dsp_slave
     generic map (
@@ -75,13 +80,15 @@ begin
         D_OUT               =>DIN_IP,
         IDMA_LOCK           =>dev_lock,
         IDMA_ADDR           =>addr_ii,
-        nIACK               =>nIACK_i
+        nIACK               =>nIACK_i,
+        IDMA_BUS_DEBUG      =>IAD,
+        reset_sim           =>dsp_res
     );      
     
     --IAD bus direction
     IAD_control: process
     begin
-        if(DSP_busctrl='0') then
+        if(nRD='1') then
             DIN_EXT<=IAD;
             IAD<=(others=>'Z');
         else
@@ -115,7 +122,7 @@ begin
         IDMA_DATA_WIDTH => IDMA_DATA_WIDTH)
     port map(
         clk =>dsp_clk,
-        reset => dsp_rst,
+        reset => dsp_res,
         D_IN =>DIN,
         D_OUT=>DOUT_DSP,
         nIACK=>nIACK_i,

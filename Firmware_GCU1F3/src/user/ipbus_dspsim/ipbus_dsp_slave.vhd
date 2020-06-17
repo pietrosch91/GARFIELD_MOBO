@@ -33,7 +33,9 @@ entity ipbus_dsp_slave is
         D_OUT               : out std_logic_vector(IDMA_DATA_WIDTH-1 downto 0);
         IDMA_LOCK           : out std_logic;
         IDMA_ADDR           : in std_logic_vector(IDMA_ADDR_WIDTH-1 downto 0);
-        nIACK               : in std_logic
+        nIACK               : in std_logic;
+        IDMA_BUS_DEBUG      : in std_logic_vector(IDMA_DATA_WIDTH-1 downto 0);
+        reset_sim           : out std_logic
     );
 end ipbus_dsp_slave;
 
@@ -49,6 +51,8 @@ alias reg_address                    : std_logic_vector(2 downto 0) is ipbus_in.
   constant IACK                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(2, 3));
   constant LOCK                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(3, 3));
   constant ADDR                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(4, 3));
+  constant IDMA_BUS                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(5, 3));
+  constant RESET_C                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(6, 3));
 
 begin
     IDMA_CTRL<=IDMA_CTRL_i;
@@ -69,6 +73,8 @@ begin
                         IDMA_CTRL_i<=ipbus_in.ipb_wdata(3 downto 0);
                     when IDMA_DATA =>
                         D_OUT<=ipbus_in.ipb_wdata(IDMA_DATA_WIDTH-1 downto 0);
+                    when RESET_C =>
+                        reset_sim<=ipbus_in.ipb_wdata(0);
                     when others => null;
                 end case;
             end if;
@@ -91,6 +97,8 @@ begin
             when IDMA_DATA =>
                 ipbus_out.ipb_rdata(IDMA_DATA_WIDTH-1 downto 0) <= D_IN;
                -- ipbus_out.ipb_rdata(31 downto IDMA_DATA_WIDTH) <= (others =>'0');
+            when IDMA_BUS =>
+                ipbus_out.ipb_rdata(IDMA_DATA_WIDTH-1 downto 0) <= IDMA_BUS_DEBUG;
             when IACK =>
                 ipbus_out.ipb_rdata(0) <= nIACK;
                -- ipbus_out.ipb_rdata(31 downto 1) <= (others =>'0');

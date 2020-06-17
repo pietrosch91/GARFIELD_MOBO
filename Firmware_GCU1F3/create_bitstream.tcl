@@ -62,6 +62,9 @@ read_vhdl -library usrDefLib [glob src/user/ipbus_daq/*.vhd]
 # ipbus DSP simulator
 read_vhdl -library usrDefLib [glob src/user/ipbus_dspsim/*.vhd]
 
+# ipbus DSP interface
+read_vhdl -library usrDefLib [glob src/user/ipbus_dsp_interface/*.vhd]
+
 #ipbus Trigger manager
 read_vhdl -library usrDefLib [glob src/user/ipbus_trigger_manager/*.vhd]
 

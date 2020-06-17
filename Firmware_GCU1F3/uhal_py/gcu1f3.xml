@@ -124,6 +124,25 @@
         <node id="niack" address="0x2" mode="single" permission="r"/>
         <node id="dsplock" address="0x3" mode="single" permission="rw"/>
         <node id="idmaaddr" address="0x4" mode="single" permission="r"/>
+        <node id="idma_debug" address="0x5" mode="single" permission="r"/>
+        <node id="reset_sim" address="0x6" mode="single" permission="w"/>
+    </node>
+    <node id="dsp_iface_ctrl" address="0x600" fwinfo="endpoint;width=2" >
+        <node id="CtrlReg" address="0x0" mode="single" permission="rw">
+            <node id="data_bus" mask="0xffff"/>
+            <node id="op_code"  mask="0xf0000"/>
+            <node id="op_valid" mask="0x100000"/>
+            <node id="xfer_len" mask="0x1fe00000"/>
+        </node>
+        <node id="option_register" address="0x1" mode="single" permission="rw">
+            <node id="iack_resync" mask="0x1"/>
+            <node id="dsp_reset" mask="0x2"/>
+        </node>
+        <node id="Status" address="0x2" mode="single" permission="r">
+            <node id="busy" mask="0x1"/>
+            <node id="data_ready" mask="0x2"/>
+        </node>
+        <node id="Data_Read" address="0x3" mode="single" permission="r"/>       
     </node>
      <node id="GPIO" address="0x2000" description="GPIOs" fwinfo="endpoint;width=1" tags="slave9">
       <node id="zero" mask="0x00000001" />

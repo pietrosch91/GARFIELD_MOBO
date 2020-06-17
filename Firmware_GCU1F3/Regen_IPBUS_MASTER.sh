@@ -2,6 +2,7 @@
 
 
 cd uhal_py
+mkdir tmp
 cp $1 tmp/
 cd tmp
 mv $1 gcu1f3.xml

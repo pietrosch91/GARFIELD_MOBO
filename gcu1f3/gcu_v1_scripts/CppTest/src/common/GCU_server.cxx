@@ -25,6 +25,7 @@
 
 #define TEST_IDMA
 
+
 using namespace uhal;
 using namespace std;
 
@@ -385,7 +386,75 @@ void ReadIDMA(HwInterface *h,uint32_t size,std::vector<uint32_t> *data){
         OpWrite(h,IDMA(LOCK),0);       
 }
 
+//IDMA test through interface
+//operation
+#define IDMA_IAL 0x3
+#define IDMA_WR  0x5
+#define IDMA_RD  0x6
+
+int IDMA_I_BASE;
+#define IDMA_DATA_ADDR 2 
+#define IDMA_OPCODE 3
+#define IDMA_CMD_VALID 4
+#define IDMA_DATA_READ 12
+#define IDMA_I(c) IDMA_I_BASE+c
+
+
+void SetIDMAAddress_I(HwInterface *h,uint32_t addr){
+        //Release lock
+        OpWrite(h,IDMA(LOCK),0);
+        //Write addr and opcode
+        OpWrite(h,IDMA_I(IDMA_DATA_ADDR),addr);
+        OpWrite(h,IDMA_I(IDMA_OPCODE),IDMA_IAL);
+        //Start op
+        OpWrite(h,IDMA_I(IDMA_CMD_VALID),1);
+        usleep(1);
+        //End op
+        OpWrite(h,IDMA_I(IDMA_CMD_VALID),0);
+}
+
+void WriteIDMA_I(HwInterface *h,uint32_t size,std::vector<uint32_t> data){
+        //Release lock
+        OpWrite(h,IDMA(LOCK),0);
+        //Write
+        OpWrite(h,IDMA_I(IDMA_OPCODE),IDMA_WR);
+        for(uint i=0;i<size;i++){
+            //Set data and start op
+            OpWrite(h,IDMA_I(IDMA_DATA_ADDR),data[i]);
+            OpWrite(h,IDMA_I(IDMA_CMD_VALID),1);
+            usleep(1);
+            //close WR cicle
+            OpWrite(h,IDMA_I(IDMA_CMD_VALID),0);
+        }        
+}
+
+void ReadIDMA_I(HwInterface *h,uint32_t size,std::vector<uint32_t> *data){
+        //Release lock
+        OpWrite(h,IDMA(LOCK),0);
+        data->clear();
+        //Write
+        OpWrite(h,IDMA_I(IDMA_OPCODE),IDMA_RD);        
+        for(uint i=0;i<size;i++){
+            OpWrite(h,IDMA_I(IDMA_CMD_VALID),1);
+            usleep(1);
+            OpRead(h,IDMA_I(IDMA_DATA_READ));
+            data->push_back(readreg);
+            OpWrite(h,IDMA_I(IDMA_CMD_VALID),0);
+        }        
+}
+
+void IDMAInit_I(HwInterface *h,uint32_t size){
+    SetIDMAAddress_I(h,0);
+    std::vector<uint32_t> data;
+    for(uint i=0;i<size;i++)data.push_back(i+1);
+    WriteIDMA_I(h,size,data);
+    SetIDMAAddress_I(h,0);
+}
 #endif
+
+
+
+
 
 /* ********************** */
 /* *****INPUT-OUTPUT***** */
@@ -648,6 +717,31 @@ int main(int argc,char *argv[]){
         }
         else if(!strcmp(command,"IINIT")){
             IDMAInit(hw,256);
+        }
+        else if(!strcmp(command,"IAL_I")){
+            sscanf(stringa,"%s %d",command,&IDREG);
+            SetIDMAAddress_I(hw,IDREG);
+        }
+        else if(!strcmp(command,"IWR_I")){
+            sscanf(stringa,"%s %d",command,&REGSIZE);
+            std::vector<uint32_t> data;
+            int nmax=REGSIZE;
+            std::istringstream iss(stringa);
+            iss>>command>>REGSIZE;
+            for(int i=0;i<nmax;i++){
+                iss>> IDREG;
+                data.push_back(IDREG);
+            }            
+            WriteIDMA_I(hw,(uint32_t)nmax,data);
+        }
+        else if(!strcmp(command,"IRD_I")){
+            sscanf(stringa,"%s %d",command,&REGSIZE);
+            std::vector<uint32_t> data;
+            ReadIDMA_I(hw,REGSIZE,&data);
+            for(int i=0;i<REGSIZE;i++) std::cout<<data[i]<<"\n";
+        }
+        else if(!strcmp(command,"IINIT_I")){
+            IDMAInit_I(hw,256);
         }
 #endif        
     }

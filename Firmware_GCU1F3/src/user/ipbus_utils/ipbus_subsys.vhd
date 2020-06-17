@@ -106,6 +106,15 @@ architecture rtl of ipbus_subsys is
   -----------------------------------------------------------------------------
   signal pkg_data_o   : T_SLVV_128(2 downto 0);
   signal valid_data_o : std_logic_vector(2 downto 0);
+  
+  signal nIACK_int :std_logic;
+  signal nIS_int :std_logic;
+  signal nWR_int :std_logic;
+  signal nRD_int :std_logic;
+  signal nIAL_int :std_logic;
+  signal IAD_int :std_logic_vector(15 downto 0);
+  signal bus_ctrl_in:std_logic;
+  
 begin
 
 -- ipbus address decode
@@ -137,16 +146,32 @@ begin
         ipb_rst            =>  ipb_rst,   
         ipbus_in           =>ipbw(N_SLV_DSP_SIM),
         ipbus_out          => ipbr(N_SLV_DSP_SIM),
-        --nIACK: out std_logic;
-        nWR => '1',
-        nRD => '1',
-        nIAL => '1',
-        nIS => '1',
-        IAD => open
+        bus_ctrl =>bus_ctrl_in,
+        nIACK   => nIACK_int,
+        nWR => nWR_int,
+        nRD => nRD_int,
+        nIAL => nIAL_int,
+        nIS => nIS_int,
+        IAD => IAD_int
     );
   
-  
-  
+    
+   dspiface1: entity work.dsp_interface
+    port map(
+        -- ip bus interface
+        ipb_clk             =>ipb_clk,
+        ipb_rst             =>ipb_rst,
+        ipbus_in            =>ipbw(N_SLV_DSP_IFACE_CTRL),
+        ipbus_out           =>ipbr(N_SLV_DSP_IFACE_CTRL),
+        --external interface
+        nIACK=>nIACK_int,
+        nWR => nWR_int,
+        nRD => nRD_int,
+        nIAL=> nIAL_int,
+        nIS=>nIS_int,
+        IAD=>IAD_int,
+        bus_ctrl=>bus_ctrl_in
+    );
   
   
   

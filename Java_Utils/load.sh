@@ -1,1 +1,1 @@
- export CLASSPATH=/usr/share/java/*:/home/bini/GCU_FIRMWARE_GARFIELD/Java_Utils/*:/home/bini/GCU_FIRMWARE_GARFIELD/Java_Utils/server/*:/home/bini/GCU_FIRMWARE_GARFIELD/Java_Utils/client/*:.
+ export CLASSPATH=/usr/share/java/*:/home/bini/GARFIELD_MOBO/Java_Utils/*:/home/bini/GARFIELD_MOBO/Java_Utils/server/*:/home/bini/GARFIELD_MOBO/Java_Utils/client/*:.
