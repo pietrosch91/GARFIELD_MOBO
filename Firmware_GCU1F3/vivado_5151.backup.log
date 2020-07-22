@@ -1,0 +1,146 @@
+#-----------------------------------------------------------
+# Vivado v2018.3.1 (64-bit)
+# SW Build 2489853 on Tue Mar 26 04:18:30 MDT 2019
+# IP Build 2486929 on Tue Mar 26 06:44:21 MDT 2019
+# Start of session at: Thu Jul 16 16:56:20 2020
+# Process ID: 5151
+# Current directory: /home/bini/GARFIELD_MOBO/Firmware_GCU1F3
+# Command line: vivado
+# Log file: /home/bini/GARFIELD_MOBO/Firmware_GCU1F3/vivado.log
+# Journal file: /home/bini/GARFIELD_MOBO/Firmware_GCU1F3/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/bini/Desktop/DSP_control/DSP_control.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/bini/Xilinx/Vivado/2018.3/data/ip'.
+WARNING: [IP_Flow 19-2162] IP 'channel_fifo' is locked:
+* Current project part 'xc7vx485tffg1157-1' and the part 'xc7k325tffg900-2' used to customize the IP 'channel_fifo' do not match.
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+update_compile_order -fileset sources_1
+launch_simulation
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+WARNING: [Runs 36-337] The following IPs are either missing output products or output products are not up-to-date for Simulation target. Since these IPs are locked, no update to the output products can be done. 
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+/home/bini/GARFIELD_MOBO/fifo_prj/fifo_prj.srcs/sources_1/ip/channel_fifo/channel_fifo.xci
+
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/home/bini/Xilinx/Vivado/2018.3/data/xsim/xsim.ini' copied to run dir:'/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'DSP_control_TB' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj DSP_control_TB_vlog.prj
+xvhdl --incr --relax -prj DSP_control_TB_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/bini/GARFIELD_MOBO/Firmware_GCU1F3/src/user/ipbus_dsp_interface/DSP_control.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'DSP_control'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/bini/Desktop/DSP_control/DSP_control.srcs/sim_1/new/DSP_control_TB.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'DSP_control_TB'
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /home/bini/Xilinx/Vivado/2018.3/bin/unwrapped/lnx64.o/xelab -wto 3d7f86b8a7e7407eb8058d9b631b1fa6 --incr --debug typical --relax --mt 8 -L fifo_generator_v13_2_3 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot DSP_control_TB_behav xil_defaultlib.DSP_control_TB xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+ERROR: [VRFC 10-718] formal port <IAD> does not exist in entity <DSP_control>.  Please compare the definition of block <DSP_control> to its component declaration and its instantion to detect the mismatch. [/home/bini/Desktop/DSP_control/DSP_control.srcs/sim_1/new/DSP_control_TB.vhd:47]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or '/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+WARNING: [Runs 36-337] The following IPs are either missing output products or output products are not up-to-date for Simulation target. Since these IPs are locked, no update to the output products can be done. 
+Please select 'Report IP Status' from the 'Tools/Report' menu or run Tcl command 'report_ip_status' for more information.
+/home/bini/GARFIELD_MOBO/fifo_prj/fifo_prj.srcs/sources_1/ip/channel_fifo/channel_fifo.xci
+
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/home/bini/Xilinx/Vivado/2018.3/data/xsim/xsim.ini' copied to run dir:'/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'DSP_control_TB' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj DSP_control_TB_vlog.prj
+xvhdl --incr --relax -prj DSP_control_TB_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/bini/Desktop/DSP_control/DSP_control.srcs/sim_1/new/DSP_control_TB.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'DSP_control_TB'
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /home/bini/Xilinx/Vivado/2018.3/bin/unwrapped/lnx64.o/xelab -wto 3d7f86b8a7e7407eb8058d9b631b1fa6 --incr --debug typical --relax --mt 8 -L fifo_generator_v13_2_3 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot DSP_control_TB_behav xil_defaultlib.DSP_control_TB xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-516] comparison between unequal length arrays always returns FALSE [/home/bini/GARFIELD_MOBO/Firmware_GCU1F3/src/user/ipbus_dsp_interface/DSP_control.vhd:386]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package vl.vl_types
+Compiling module xil_defaultlib.glbl
+Compiling module fifo_generator_v13_2_3.fifo_generator_v13_2_3_bhv_ver_s...
+Compiling module fifo_generator_v13_2_3.fifo_generator_v13_2_3_bhv_ver_p...
+Compiling module fifo_generator_v13_2_3.fifo_generator_v13_2_3_CONV_VER(...
+Compiling module fifo_generator_v13_2_3.fifo_generator_vlog_beh(C_COMMON...
+Compiling module fifo_generator_v13_2_3.fifo_generator_v13_2_3(C_COMMON_...
+Compiling module xil_defaultlib.channel_fifo
+Compiling architecture behavioral of entity xil_defaultlib.DSP_control [dsp_control_default]
+Compiling architecture behavioral of entity xil_defaultlib.dsp_control_tb
+Built simulation snapshot DSP_control_TB_behav
+
+****** Webtalk v2018.3.1 (64-bit)
+  **** SW Build 2489853 on Tue Mar 26 04:18:30 MDT 2019
+  **** IP Build 2486929 on Tue Mar 26 06:44:21 MDT 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source /home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim/xsim.dir/DSP_control_TB_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Jul 16 17:04:56 2020...
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/bini/Desktop/DSP_control/DSP_control.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "DSP_control_TB_behav -key {Behavioral:sim_1:Functional:DSP_control_TB} -tclbatch {DSP_control_TB.tcl} -view {/home/bini/Desktop/DSP_control/DSP_control_TB_behav.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+open_wave_config /home/bini/Desktop/DSP_control/DSP_control_TB_behav.wcfg
+WARNING: Simulation object /DSP_control_TB/DSP_control_inst/IAD was not found in the design.
+source DSP_control_TB.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'DSP_control_TB_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:10 ; elapsed = 00:00:08 . Memory (MB): peak = 6529.668 ; gain = 65.664 ; free physical = 3231 ; free virtual = 36162
+restart
+INFO: [Simtcl 6-17] Simulation restarted
+run 10 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Jul 16 17:05:48 2020...

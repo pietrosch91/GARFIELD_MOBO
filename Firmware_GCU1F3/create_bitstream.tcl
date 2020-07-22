@@ -65,6 +65,15 @@ read_vhdl -library usrDefLib [glob src/user/ipbus_dspsim/*.vhd]
 # ipbus DSP interface
 read_vhdl -library usrDefLib [glob src/user/ipbus_dsp_interface/*.vhd]
 
+# ipbus data merge
+read_vhdl -library usrDefLib [glob src/user/ipbus_data_merge/*.vhd]
+
+# ipbus DSP loader
+read_vhdl -library usrDefLib [glob src/user/ipbus_dsp_loader/*.vhd]
+
+#ipbus DSP readout
+read_vhdl -library usrDefLib [glob src/user/ipbus_dsp_readout/*.vhd]
+
 #ipbus Trigger manager
 read_vhdl -library usrDefLib [glob src/user/ipbus_trigger_manager/*.vhd]
 
@@ -104,6 +113,8 @@ read_verilog -library usrDefLib src/tsinghua/adu_top/src/element/Signal_CrossDom
 read_verilog -library usrDefLib src/tsinghua/adu_top/src/element/SimpleSPIMaster.v
 
 
+#import_ip -files {../fifo_prj/fifo_prj.srcs/sources_1/ip/channel_fifo/}
+
 
 #VHDL  source files
 read_vhdl -library usrDefLib [ glob src/eth_mac/*.vhd ]
@@ -117,11 +128,19 @@ read_checkpoint src/ip_cores/eth_ip/tri_mode_ethernet_mac_0.dcp
 read_checkpoint src/ip_cores/mac_fifo_axi4/mac_fifo_axi4.dcp
 # IP cores for the Data Assembly module
 read_checkpoint src/ip_cores/data_channel_fifo/data_channel_fifo.dcp
+#read_checkpoint .srcs/sources_1/ip/channel_fifo/channel_fifo.dcp
+read_ip ../fifo_prj/fifo_prj.srcs/sources_1/ip/channel_fifo/channel_fifo.xci
+read_ip ../fifo_prj/fifo_prj.srcs/sources_1/ip/global_fifo/global_fifo.xci
+
 read_checkpoint src/ip_cores/trig_latency/trig_latency_fifo.dcp
 
 #Run Synthesis
 synth_design -top $topentityname   -part $partNum
 write_checkpoint -force $outputDir/post_synth.dcp
+
+# add ila core
+source  create_ila.tcl
+
 #report_timing_summary -file $outputDir/post_synth_timing_summary.rpt
 #report_utilization -file $outputDir/post_synth_util.rpt
 # constraints
@@ -137,6 +156,8 @@ source src/constraints/synch_link.tcl
 #run optimization
 opt_design
 
+#create debug probes file
+write_debug_probes -force debug_probes.ltx
 
 
 # workaround forn ADC B channels

@@ -1,0 +1,96 @@
+
+
+
+
+*top_gcu1f3  (src/user/top_gcu1f3.vhd)
+        *clk_manager (src/user/clk_manager.vhd)
+            NOTA: può usare il clock interno o quello ricavato dal CDR (clock esterno sincrono).
+            *clk_wiz     (src/user/clk_wiz.vhd)
+                -PLL (MMCME2_ADV) (https://www.xilinx.com/support/documentation/user_guides/ug472_7Series_Clocking.pdf)
+                    clk_0   -> come CLKIN (125MHz)
+                    clk_1   -> 250MHz
+                    clk_2   -> 200MHz
+                    clk_3   -> 100MHz
+                    clk_4   -> 125MHz, sfasato di 90°
+                    clk_5   -> 31.25MHz
+        *delay_manager   (src/user/delay_manager.vhd)
+            NOTA: incapsula un IDELAYCTRL ipcore (https://www.xilinx.com/support/documentation/ip_documentation/util_idelay_ctrl/v1_0/pb044-util-idelay-ctrl.pdf)
+        *CDR clock input section
+        *process: reset_generator
+            NOTA: genera un segnale di reset 3 secondi dopo il boot
+        *process: local_time_generator:
+            NOTA: conta il main clock (da quarzo esterno) locale, non utilizza BEC
+        *network_interface (src/user/network_interface.vhd)
+            NOTA: interfaccia principale di rete e IPBUS core (vedi dopo), contiene tutti gli SLAVE IPBUS
+        *mcp_block (x3) (src/user/mcp_block.vhd)
+            NOTA: serve per risincronizzare il segnale pulse_valid tra il dominio di clock interno e quello dell'ADU, instanziato 3 volte (una per ADU)
+            *shaper (src/user/shaper.vhd)
+                NOTA: window generator -> prende un segnale in ingresso e genera impulsi lunghi 10 clock
+            *synchronizer (src/user/synchronizer.vhd)
+            *edge_detector (src/user/edge_detector.vhd)
+        *top_level      (src/user/synch/top_level_cont.vhd)
+            NOTA: evito il dettaglio interno, gestisce la sincronizzazione tramite il link dedicato
+        *adu_top_wrapper (x3) (src/tsinghua/adu_top/src/adu_top_wrapper.vhd)
+            NOTA: incapsula tutta la logica di interfaccia con le ADU, evito il dettaglio tanto andrà tolta
+        *dac_config_wrapper (src/tsinghua/adu_top/src/dac_pll_config/dac_config_wrapper.vhd)
+            NOTA: relativo al funzionamento delle ADU
+        *picoblaze_top (src/user/picoblaze_top.vhd)
+            NOTA: incapsula l'interfaccia con la porta UART
+            
+            
+            
+STRUTTURA INTERNA DI network_interface
+*network_interface (src/user/network_interface.vhd)
+    *tri_mod_ethernet_mac_0  
+        NOTA: interfaccia Ethernet
+    *mac_fifo_axi4
+    *process: ipbus_reset
+        NOTA: genera un segnale di ipbus_reset all'avvio (dopo un ritardo di mezzo secondo)
+    *ipbus_ctrl (externals/ipbus-firmware/components/ipbus_core/firmware/hdl/ipbus_ctrl.vhd)
+        NOTA: interfaccia principale IPBUS, non andrà modificata.
+    *USER_ACCESSE2 (IPCORE)
+        NOTA: contiene il MAC-Address della scheda, settato in create_bitstream.tcl
+    *ipbus_shim (externals/ipbus-firmware/components/ipbus_core/firmware/hdl/ipbus_shim.vhd)
+        NOTA: fa da interfaccia tra IPBUS_CTRL e PAYLOAD (lavora sui bus dati IPBUS)
+    *payload    (src/user/ipbus_utils/payload.vhd)
+        *conversione time_stamp in codifica gray
+        *ipbus_subsys (src/user/ipbus_utils/ipbus_subsys.vhd)
+            NOTA: contiene tutti gli slave IPBUS
+            *ipbus_fabric_sel (externals/ipbus-firmware/components/ipbus_core/firmware/hdl/ipbus_fabric_sel.vhd)
+                NOTA: address decoder per IPBUS
+            *tutti gli ipbus_slaves
+            
+            
+            
+NOTA GENERALE:
+    Tutti gli IPBUS slave sono difatti delle interfacce di Memoria con cui si comunica tramite IPBUS. Il modo in cui queste memorie si interfacciano con i blocchi di codice VHDL interni può essere scelto in base alla convenienza.
+    Al momento, il codice che implementa la memoria è direttamente inserito nei vari slave, quindi in pratica il blocco network_interface contiene sia l'interfaccia di rete che tutto il codice che utilizza tale interfaccia. In futuro si può pensare di svincolare le due parti.
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

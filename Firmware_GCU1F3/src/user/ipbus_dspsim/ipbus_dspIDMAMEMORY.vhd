@@ -66,8 +66,11 @@ architecture rtl of IDMA_mem is
     
     signal nIAL_del: std_logic;
     
+    attribute mark_debug : string;
+    attribute mark_debug of address     : signal is "true";
     
 begin
+    
     addr_out<=std_logic_vector(address);
     addrint<=to_integer(address);
     D_OUT<=idma_mem(addrint);
@@ -137,6 +140,7 @@ begin
                         c_state<=end_wr;
                     end if;               
                 when end_wr=>
+                    nIACK<='1';
                     address<=address+to_unsigned(1,IDMA_ADDR_WIDTH);
                     c_state<=idle_s;                
                 when wait_rd =>
@@ -149,6 +153,7 @@ begin
                         c_state<=end_rd;
                     end if;                
                 when end_rd=>
+                    nIACK<='1';
                     address<=address+to_unsigned(1,IDMA_ADDR_WIDTH);
                     c_state<=idle_s;                
                 when wait_ial =>

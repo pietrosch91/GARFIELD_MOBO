@@ -104,16 +104,30 @@ architecture rtl of ipbus_subsys is
                                                               N_SLV_L1_CACHE_1,
                                                               N_SLV_L1_CACHE_2);
   -----------------------------------------------------------------------------
+  type IAD is array(7 downto 0) of std_logic_vector(15 downto 0);
+  
   signal pkg_data_o   : T_SLVV_128(2 downto 0);
   signal valid_data_o : std_logic_vector(2 downto 0);
   
-  signal nIACK_int :std_logic;
-  signal nIS_int :std_logic;
-  signal nWR_int :std_logic;
-  signal nRD_int :std_logic;
-  signal nIAL_int :std_logic;
-  signal IAD_int :std_logic_vector(15 downto 0);
-  signal bus_ctrl_in:std_logic;
+  signal nIACK_int :std_logic_vector (7 downto 0);
+  signal nIS_int :std_logic_vector (7 downto 0);
+  signal nWR_int :std_logic_vector (7 downto 0);
+  signal nRD_int :std_logic_vector (7 downto 0);
+  signal nIAL_int :std_logic_vector (7 downto 0);
+  signal IAD_to_DSP :IAD;
+  signal IAD_from_DSP :IAD;
+  signal CLR_int:std_logic_vector(7 downto 0);
+  signal REQ_int:std_logic_vector (7 downto 0);
+  signal EVNT_int:std_logic_vector (7 downto 0);
+  signal DREADY_int: std_Logic_Vector(7 downto 0);
+  signal DBUSY_int: std_Logic_Vector(7 downto 0);
+  signal bus_ctrl_in:std_logic_vector(7 downto 0);
+  signal DSP_trig0: std_logic_Vector(7 downto 0);
+  
+  signal DSP_rol_int:std_logic;
+  signal DSP_startro_int:std_logic;
+  signal Event_Ready_int:std_Logic;
+  signal DSP_valid_int:std_logic;
   
 begin
 
@@ -134,8 +148,52 @@ begin
 -------------------------------------------------------------------------------
 -- ipbus slaves
 -------------------------------------------------------------------------------
-
-  dspsim1: entity work.dsp_simulator
+--test fifo
+    fifotest1 : entity work.dsp_loader
+    generic map(
+        EEPROM_ADDR_WIDTH =>7,
+        EEPROM_DATA_WIDTH =>8)
+    port map(
+        ipb_clk           => ipb_clk,
+        ipb_rst            =>  ipb_rst,   
+        ipbus_in           =>ipbw(N_SLV_DSP_LOADER),
+        ipbus_out          => ipbr(N_SLV_DSP_LOADER)    
+    );
+    
+     
+    
+   --ReadOut control
+   
+    dsp_readout: entity work.dsp_readout
+    generic map(
+        NDSP=>2
+    )
+    port map(
+        ipb_clk  => ipb_clk,
+        ipb_rst  =>ipb_rst,
+        ipbus_in  =>ipbw(N_SLV_DSP_READOUT_CTRL), 
+        ipbus_out  => ipbr(N_SLV_DSP_READOUT_CTRL),		
+		nReset =>not ipb_rst,
+		clk	 =>ipb_clk,
+        dsp_readout_lock=>dsp_rol_int,
+		dsp_startro=>dsp_startro_int,
+		--feedback from dsp interfaces
+		dsp_dataready=>DREADY_int,
+		dsp_busy=>DBUSY_int,	
+		--DSP signals
+		trigger_dsp=>open,
+		valid_dsp=>DSP_valid_int,
+		--local inhibit
+		local_inhibit =>open,
+		--event ready strobe
+		evnt_ready=>Event_ready_int
+    );
+    
+    
+    
+gen_dsp: for dspn in 0 to 1 generate
+   
+  dspsim: entity work.dsp_simulator
     generic map(
         IDMA_ADDR_WIDTH => 8,
         IDMA_DATA_WIDTH => 16)
@@ -144,38 +202,69 @@ begin
         dsp_clk           => ipb_clk,
         ipb_clk           => ipb_clk,
         ipb_rst            =>  ipb_rst,   
-        ipbus_in           =>ipbw(N_SLV_DSP_SIM),
-        ipbus_out          => ipbr(N_SLV_DSP_SIM),
-        bus_ctrl =>bus_ctrl_in,
-        nIACK   => nIACK_int,
-        nWR => nWR_int,
-        nRD => nRD_int,
-        nIAL => nIAL_int,
-        nIS => nIS_int,
-        IAD => IAD_int
+        ipbus_in           =>ipbw(N_SLV_DSP_SIM_CH0+dspn),
+        ipbus_out          => ipbr(N_SLV_DSP_SIM_CH0+dspn),
+        bus_ctrl =>bus_ctrl_in(dspn),
+        nIACK   => nIACK_int(dspn),
+        nWR => nWR_int(dspn),
+        nRD => nRD_int(dspn),
+        nIAL => nIAL_int(dspn),
+        nIS => nIS_int(dspn),
+        CLR => CLR_int(dspn),
+        EVNT=> EVNT_int(dspn),
+        REQ=> REQ_int(dspn),
+        DSP_Valid=> DSP_trig0(dspn),
+        IAD_in => IAD_to_DSP(dspn),
+        IAD_out => IAD_from_DSP(dspn)
     );
   
     
-   dspiface1: entity work.dsp_interface
+   dspiface: entity work.dsp_interface
     port map(
         -- ip bus interface
         ipb_clk             =>ipb_clk,
         ipb_rst             =>ipb_rst,
-        ipbus_in            =>ipbw(N_SLV_DSP_IFACE_CTRL),
-        ipbus_out           =>ipbr(N_SLV_DSP_IFACE_CTRL),
+        ipbus_in            =>ipbw(N_SLV_DSP_IFACE_CTRL_CH0+dspn),
+        ipbus_out           =>ipbr(N_SLV_DSP_IFACE_CTRL_CH0+dspn),
+         --external controls from dsp_readout
+        EVENT_READY=>Event_ready_int,
+        EXT_TRIGGER=>'0',
+        EXT_VALID=>DSP_valid_int,
+        READOUT_LOCK=>DSP_rol_int,
+        READOUT_CMD_VALID=>dsp_startro_int,
+        TRANSFER_LOCK=>'0',
+        FIFO_RDEN=>'0',
+        FIFO_RDCLK=>'0',
         --external interface
-        nIACK=>nIACK_int,
-        nWR => nWR_int,
-        nRD => nRD_int,
-        nIAL=> nIAL_int,
-        nIS=>nIS_int,
-        IAD=>IAD_int,
-        bus_ctrl=>bus_ctrl_in
+        nIACK=>nIACK_int(dspn),
+        nWR => nWR_int(dspn),
+        nRD => nRD_int(dspn),
+        nIAL=> nIAL_int(dspn),
+        nIS=>nIS_int(dspn),
+        IAD_to_DSP => IAD_to_DSP(dspn),
+        IAD_from_DSP => IAD_from_DSP(dspn),
+        CLR=>CLR_int(dspn),
+        EVNT=>EVNT_int(dspn),
+        REQ=>REQ_int(dspn),
+        DSP_VALID=>DSP_trig0(dspn),
+        DSP_TRIG=>open,
+        bus_ctrl=>bus_ctrl_in(dspn),
+        DSP_DATAREADY=>DREADY_int(dspn),
+        DSP_BUSY=>DBUSY_int(dspn),
+        DSP_FIFODATA=>open
     );
   
+  end generate gen_dsp;
   
-  
-  
+
+   ipbus_merge : entity work.merge_top
+    port map (
+        ipb_clk             => ipb_clk,
+        ipb_rst             => ipb_rst,
+        ipbus_in            => ipbw(N_SLV_DATA_MERGE),
+        ipbus_out           => ipbr(N_SLV_DATA_MERGE)
+    );
+
   ipbus_ram_1 : entity work.ipbus_ram
     generic map (
       ADDR_WIDTH => 4)
@@ -202,13 +291,7 @@ begin
         ipbus_out           => ipbr(N_SLV_COUNTER)
    );
    
-    ipbus_memblk_1 : entity work.ipbus_memblk    port map (
-         clk                 => ipb_clk,
-        reset               => ipb_rst,
-        ipbus_in            => ipbw(N_SLV_MEM_BLK),
-        ipbus_out           => ipbr(N_SLV_MEM_BLK)
-   );
-
+  
   ipbus_trigger_manager_1 : entity work.ipbus_trigger_manager
     port map (
       clk                 => ipb_clk,

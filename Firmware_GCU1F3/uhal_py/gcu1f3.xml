@@ -109,11 +109,7 @@
         <node id="inc_counter" address="0x2" description="increment" permission="w"/>
         <node id="dec_counter" address="0x3" description="decrement" permission="w"/>
     </node>
-    <node id="mem_blk" address="0x700" fwinfo="endpoint;width=5" >
-        <node id="mem_access" address="0x0" mode="block" size="16" permission="rw"/>
-        <node id="mem_CLR" address="0x10" mode="single" permission="w"/>
-    </node>
-    <node id="dsp_sim" address="0x720" fwinfo="endpoint;width=2" >
+    <node id="dsp_sim_ch0" address="0x700" fwinfo="endpoint;width=4" >
         <node id="idma_bus" address="0x0" mode="single" permission="rw"/>
         <node id="idma_ctrl" address="0x1" mode="single" permission="rw">
             <node id="nWR" mask="0x1" />
@@ -126,13 +122,37 @@
         <node id="idmaaddr" address="0x4" mode="single" permission="r"/>
         <node id="idma_debug" address="0x5" mode="single" permission="r"/>
         <node id="reset_sim" address="0x6" mode="single" permission="w"/>
+        <node id="set_evnt" address="0x7" mode="single" permission="w"/>
+        <node id="set_req" address="0x8" mode="single" permission="w"/>
     </node>
-    <node id="dsp_iface_ctrl" address="0x600" fwinfo="endpoint;width=2" >
+    <node id="dsp_sim_ch1" address="0x710" fwinfo="endpoint;width=4" >
+        <node id="idma_bus" address="0x0" mode="single" permission="rw"/>
+        <node id="idma_ctrl" address="0x1" mode="single" permission="rw">
+            <node id="nWR" mask="0x1" />
+            <node id="nRD"  mask="0x2" />
+            <node id="nIAL"  mask="0x4" />
+            <node id="nIS"  mask="0x8" />
+        </node>
+        <node id="niack" address="0x2" mode="single" permission="r"/>
+        <node id="dsplock" address="0x3" mode="single" permission="rw"/>
+        <node id="idmaaddr" address="0x4" mode="single" permission="r"/>
+        <node id="idma_debug" address="0x5" mode="single" permission="r"/>
+        <node id="reset_sim" address="0x6" mode="single" permission="w"/>
+        <node id="set_evnt" address="0x7" mode="single" permission="w"/>
+        <node id="set_req" address="0x8" mode="single" permission="w"/>
+    </node>
+    <node id="dsp_readout_ctrl" address="0x400" fwinfo="endpoint;width=2" >
+        <node id="Trigger" address="0x0" mode="single" permission="rw"/>
+        <node id="Valid" address="0x1" mode="single" permission="rw"/>
+        <node id="STATE" address="0x2" mode="single" permission="r"/>
+    </node>
+    <node id="dsp_iface_ctrl_ch0" address="0x600" fwinfo="endpoint;width=3" >
         <node id="CtrlReg" address="0x0" mode="single" permission="rw">
             <node id="data_bus" mask="0xffff"/>
             <node id="op_code"  mask="0xf0000"/>
             <node id="op_valid" mask="0x100000"/>
             <node id="xfer_len" mask="0x1fe00000"/>
+            <node id="evnt_ready" mask="0x20000000"/>
         </node>
         <node id="option_register" address="0x1" mode="single" permission="rw">
             <node id="iack_resync" mask="0x1"/>
@@ -143,8 +163,40 @@
             <node id="data_ready" mask="0x2"/>
         </node>
         <node id="Data_Read" address="0x3" mode="single" permission="r"/>       
+        <node id="Fifo_Read" address="0x4" mode="non-incremental" permission="r"/>    
+        <node id="Xfer_Len_OUT" address="0x5" mode="single" permission="r"/>  
     </node>
-     <node id="GPIO" address="0x2000" description="GPIOs" fwinfo="endpoint;width=1" tags="slave9">
+     <node id="dsp_iface_ctrl_ch1" address="0x610" fwinfo="endpoint;width=3" >
+        <node id="CtrlReg" address="0x0" mode="single" permission="rw">
+            <node id="data_bus" mask="0xffff"/>
+            <node id="op_code"  mask="0xf0000"/>
+            <node id="op_valid" mask="0x100000"/>
+            <node id="xfer_len" mask="0x1fe00000"/>
+            <node id="evnt_ready" mask="0x20000000"/>
+        </node>
+        <node id="option_register" address="0x1" mode="single" permission="rw">
+            <node id="iack_resync" mask="0x1"/>
+            <node id="dsp_reset" mask="0x2"/>
+        </node>
+        <node id="Status" address="0x2" mode="single" permission="r">
+            <node id="busy" mask="0x1"/>
+            <node id="data_ready" mask="0x2"/>
+        </node>
+        <node id="Data_Read" address="0x3" mode="single" permission="r"/>       
+        <node id="Fifo_Read" address="0x4" mode="non-incremental" permission="r"/>    
+        <node id="Xfer_Len_OUT" address="0x5" mode="single" permission="r"/>  
+    </node>
+     <node id="data_merge" address="0x680" fwinfo="endpoint;width=2" >
+        <node id="Fifo_Read" address="0x0" mode="non-incremental" permission="r"/>    
+        <node id="Fifo_Write" address="0x1" mode="non-incremental" permission="w"/>    
+    </node>
+    <node id="dsp_loader" address="0x500" fwinfo="endpoint;width=2" >
+        <node id="fifo_reset" address="0x0" mode="single" permission="rw"/>
+        <node id="fifo_wr" address="0x1" mode="non-incremental" permission="w"/>
+        <node id="fifo_rd" address="0x2" mode="non-incremental" permission="r"/>
+        <node id="fifo_count" address="0x3" mode="single" permission="r"/>       
+    </node>
+     <node id="GPIO" address="0x2000" description="GPIgen_ipbus_addr_decodeOs" fwinfo="endpoint;width=1" tags="slave9">
       <node id="zero" mask="0x00000001" />
       <node id="one" mask="0x00000002"/>
     </node>

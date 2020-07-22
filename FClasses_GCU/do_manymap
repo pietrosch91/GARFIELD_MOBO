@@ -1,0 +1,27 @@
+#!/bin/bash
+
+ROOTSYS=$(root-config --prefix)
+ROOT_CONFIG=$ROOTSYS/bin/root-config
+
+
+LIBFIASCO=$1
+LIBDIR=$($ROOT_CONFIG --libdir)
+
+#from Axel: http://root.cern.ch/phpBB2/viewtopic.php?t=4778
+SYMBOLS=$(symbols=`nm -C $LIBFIASCO.so | grep -E ' U T[[:alnum:]_]+::' | sed 's,^.* U \([[:alnum:]_]\+\)::.*$,(\1),'| sort | uniq | tr '\n' '|'`; (for so in $LIBDIR/*.so; do nm -C -D --defined-only $so | grep -E 'T ('$symbols')::' > /dev/null && echo $so; done )| sort | uniq )
+#remove $LIBDIR
+SSYMBOLS=$(echo $SYMBOLS | sed s="$LIBDIR/"==g)
+
+
+for CLASS in $* ; do
+if [ $CLASS != $LIBFIASCO ]; then
+#now output rootmap
+echo -n "Library.$CLASS:  $CLASS.so $LIBFIASCO.so "
+INTERDEP=$(grep "#include" $CLASS.h | grep "<F\|\"F"  | grep -v "//" |  sed -e 's/<//' -e  's/#include//' -e 's/.h>/.so/' -e 's/\"//g' -e 's/.h/.so/'|  tr '\n' ' ')
+echo -n "$INTERDEP "
+for ROOTLIB in $SSYMBOLS ; do
+    echo -n "$ROOTLIB "
+done
+echo ""
+fi
+done

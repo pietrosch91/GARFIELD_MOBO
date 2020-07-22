@@ -35,7 +35,15 @@ entity dsp_simulator is
         nRD: in std_logic;
         nIAL: in std_logic;
         nIS: in std_logic;
-        IAD: inout std_logic_vector(IDMA_DATA_WIDTH-1 downto 0)
+        DSP_VALID : in std_logic;
+        --event readout logic
+        CLR: in std_logic;
+        EVNT: out std_logic;
+        REQ: out std_logic;
+        
+        IAD_in: in std_logic_vector(IDMA_DATA_WIDTH-1 downto 0);
+        IAD_out: out std_logic_vector(IDMA_DATA_WIDTH-1 downto 0)
+        
     );
 end dsp_simulator;
 
@@ -57,12 +65,18 @@ architecture rtl of dsp_simulator is
     signal DIN_IP:std_logic_vector(IDMA_DATA_WIDTH-1 downto 0);
     signal DIN:std_logic_vector(IDMA_DATA_WIDTH-1 downto 0);
     
+    signal set_req_int:std_logic;
+    --signal req_int:std_logic;
+    signal set_evnt_int:std_logic;
+    --signal evnt_int:std_logic;
+    
     --dsp
     signal nIACK_i: std_logic;
     
     signal dsp_res : std_logic;
     
 begin
+    nIACK<=nIACK_i;
     bus_ctrl<=DSP_busctrl;
     --IPBUS ALLOCATION
     ipbus_slave_1 : entity work.ipbus_dsp_slave
@@ -81,21 +95,56 @@ begin
         IDMA_LOCK           =>dev_lock,
         IDMA_ADDR           =>addr_ii,
         nIACK               =>nIACK_i,
-        IDMA_BUS_DEBUG      =>IAD,
+        IDMA_BUS_DEBUG      =>DOUT_DSP,
+    --other
+        set_evnt            =>set_evnt_int,
+        set_req             =>set_req_int,
         reset_sim           =>dsp_res
-    );      
-    
+    );     
+--     
+--     EVNT_FLAG: process(dsp_rst,set_evnt_int,CLR) is
+--         begin
+--             if CLR='1' or dsp_rst='1' then
+--                 EVNT<='0';
+--             elsif set_evnt_int'event and set_evnt_int='1' then
+--                 EVNT<='1';
+--             end if;       
+--         end process;
+--     
+--     REQ_FLAG: process(dsp_rst,set_req_int,CLR) is
+--         begin
+--             if CLR='1' or dsp_rst='1' then
+--                 REQ<='0';
+--             elsif set_req_int'event and set_req_int='1' then
+--                 REQ<='1';
+--             end if;       
+--         end process;
+
+    FLAG : process(dsp_rst,DSP_VALID,CLR) is
+        begin
+            if CLR='1' or dsp_rst='1' then
+                REQ<='0';
+                EVNT<='0';
+            elsif DSP_VALID'event and DSP_VALID='1' then
+                REQ<='1';
+                EVNT<='1';
+            end if;       
+        end process;
+
+       
+      DIN_EXT<=IAD_in;
+      IAD_out<=DOUT_DSP;
     --IAD bus direction
-    IAD_control: process
-    begin
-        if(nRD='1') then
-            DIN_EXT<=IAD;
-            IAD<=(others=>'Z');
-        else
-            DIN_EXT<=(others=>'0');
-            IAD<=DOUT_DSP;
-        end if;
-    end process IAD_control;
+--     IAD_control: process
+--     begin
+--         if(nRD='1') then
+--             DIN_EXT<=IAD;
+--            -- IAD<=(others=>'Z');
+--         else
+--             DIN_EXT<=(others=>'0');
+--             IAD<=DOUT_DSP;
+--         end if;
+--     end process IAD_control;
         
     --Device Locking
     CTRL_EXT(0)<=nWR;

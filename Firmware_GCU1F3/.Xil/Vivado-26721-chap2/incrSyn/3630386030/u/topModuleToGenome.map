@@ -1,0 +1,4 @@
+network_interface: network_interface__GC0, payload, 
+payload: payload__GC0, ipbus_subsys, 
+ipbus_subsys: ipbus_subsys__GC0, dsp_simulator, 
+dsp_simulator: dsp_simulator, 

@@ -1,0 +1,3 @@
+Library.FGCUControl:  FGCUControl.so libGCU.6.14.00.so  libCore.so libGpad.so libGraf.so libHist.so libMathCore.so libRIO.so 
+Library.FGCUDspBoard:  FGCUDspBoard.so libGCU.6.14.00.so  FGCUControl.so  libCore.so libGpad.so libGraf.so libHist.so libMathCore.so libRIO.so 
+Library.FGCUDsp:  FGCUDsp.so libGCU.6.14.00.so  FGCUDspBoard.so  libCore.so libGpad.so libGraf.so libHist.so libMathCore.so libRIO.so 

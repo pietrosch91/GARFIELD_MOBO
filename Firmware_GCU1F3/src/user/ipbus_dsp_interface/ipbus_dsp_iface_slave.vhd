@@ -22,13 +22,17 @@ entity ipbus_dsp_iface_slave is
         op_code             : out std_logic_vector(3 downto 0);
         op_valid            : out std_logic;
         xfer_len            : out std_logic_vector(7 downto 0);
+        evnt_ready          : out std_logic;
         --Options
         iack_resync         : out std_logic;
         --Status
         DSP_busy            : in std_logic;
         DSP_dataready       : in std_logic;
+        DSP_xfer_len        : in std_logic_vector(7 downto 0);
         --Data
         DSP_DATA            : in std_logic_vector(15 downto 0);
+        DSP_FIFO_DATA       : in std_logic_vector(15 downto 0);
+        fifo_rd             : out std_logic;
         --dsp reset
         rest_out            : out std_logic
     );
@@ -43,17 +47,26 @@ signal Ctrl_Reg : std_logic_vector(31 downto 0);
 signal Opt_Reg  : std_logic_vector(15 downto 0);
 signal Status_Reg: std_logic_vector(15 downto 0);
 
-alias reg_address                    : std_logic_vector(1 downto 0) is ipbus_in.ipb_addr(1 downto 0);
-  constant CONTROLS                : std_logic_vector(1 downto 0) := std_logic_vector(to_unsigned(0, 2));
-  constant OPTIONS               : std_logic_vector(1 downto 0) := std_logic_vector(to_unsigned(1, 2));
-  constant STATUS                : std_logic_vector(1 downto 0) := std_logic_vector(to_unsigned(2, 2));
-  constant DATAREAD                : std_logic_vector(1 downto 0) := std_logic_vector(to_unsigned(3, 2));
+--alias reg_address                    : std_logic_vector(1 downto 0) is ipbus_in.ipb_addr(1 downto 0);
+--  constant CONTROLS                : std_logic_vector(1 downto 0) := std_logic_vector(to_unsigned(0, 2));
+--  constant OPTIONS               : std_logic_vector(1 downto 0) := std_logic_vector(to_unsigned(1, 2));
+--  constant STATUS                : std_logic_vector(1 downto 0) := std_logic_vector(to_unsigned(2, 2));
+--  constant DATAREAD                : std_logic_vector(1 downto 0) := std_logic_vector(to_unsigned(3, 2));
+
+alias reg_address                    : std_logic_vector(2 downto 0) is ipbus_in.ipb_addr(2 downto 0);
+  constant CONTROLS                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(0, 3));
+  constant OPTIONS               : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(1, 3));
+  constant STATUS                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(2, 3));
+  constant DATAREAD                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(3, 3));
+  constant FIFOREAD                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(4, 3));
+  constant XFER_DSP                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(5, 3));
   
 begin
    data_out<=Ctrl_Reg(15 downto 0);
    op_code<=Ctrl_Reg(19 downto 16);
    op_valid<=Ctrl_Reg(20);
    xfer_len<=Ctrl_Reg(28 downto 21);
+   evnt_ready<=Ctrl_Reg(29);
    iack_resync<=Opt_Reg(0);
    rest_out<=Opt_Reg(1);
    Status_Reg(0)<=DSP_busy;
@@ -84,6 +97,8 @@ begin
   ipbus_read : process (Ctrl_Reg,Opt_Reg,Status_Reg,DSP_DATA) is
   begin  -- process ipbus_read
         ipbus_out.ipb_rdata<= (others =>'0');
+        fifo_rd<='0';
+
         case reg_address is
             when CONTROLS =>
                 ipbus_out.ipb_rdata(31 downto 0) <= Ctrl_Reg;
@@ -93,11 +108,19 @@ begin
                 ipbus_out.ipb_rdata(15 downto 0) <= Status_Reg;
             when DATAREAD =>
                 ipbus_out.ipb_rdata(15 downto 0) <= DSP_DATA;
-           when others => null;
+            when XFER_DSP =>
+                ipbus_out.ipb_rdata(7 downto 0) <= DSP_xfer_len;                
+            when FIFOREAD =>
+                ipbus_out.ipb_rdata(15 downto 0) <= DSP_FIFO_DATA;
+                fifo_rd           <= ipbus_in.ipb_strobe;
+            when others => null;
         end case;
   end process ipbus_read;
+  
+  
 
   ipbus_out.ipb_ack <= ipbus_in.ipb_strobe;
   ipbus_out.ipb_err <= '0';
 
+  
 end architecture rtl;

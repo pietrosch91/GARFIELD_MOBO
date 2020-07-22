@@ -96,7 +96,7 @@ default: build
 
 clean: _cleanall
 _cleanall:
-	rm -rf bin
+	rm ${EXECUTABLES}
 	rm -rf obj
 	rm -rf lib
   

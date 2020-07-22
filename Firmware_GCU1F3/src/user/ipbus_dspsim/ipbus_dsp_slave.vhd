@@ -35,6 +35,9 @@ entity ipbus_dsp_slave is
         IDMA_ADDR           : in std_logic_vector(IDMA_ADDR_WIDTH-1 downto 0);
         nIACK               : in std_logic;
         IDMA_BUS_DEBUG      : in std_logic_vector(IDMA_DATA_WIDTH-1 downto 0);
+    --other
+        set_evnt            : out std_logic;
+        set_req             : out std_logic;
         reset_sim           : out std_logic
     );
 end ipbus_dsp_slave;
@@ -45,14 +48,16 @@ signal IDMA_CTRL_i : std_logic_vector(3 downto 0);
 signal IDMA_LOCK_i  : std_logic;
 
 
-alias reg_address                    : std_logic_vector(2 downto 0) is ipbus_in.ipb_addr(2 downto 0);
-  constant IDMA_DATA                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(0, 3));
-  constant IDMA_CNTRL               : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(1, 3));
-  constant IACK                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(2, 3));
-  constant LOCK                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(3, 3));
-  constant ADDR                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(4, 3));
-  constant IDMA_BUS                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(5, 3));
-  constant RESET_C                : std_logic_vector(2 downto 0) := std_logic_vector(to_unsigned(6, 3));
+alias reg_address                    : std_logic_vector(3 downto 0) is ipbus_in.ipb_addr(3 downto 0);
+  constant IDMA_DATA                : std_logic_vector(3 downto 0) := std_logic_vector(to_unsigned(0, 4));
+  constant IDMA_CNTRL               : std_logic_vector(3 downto 0) := std_logic_vector(to_unsigned(1, 4));
+  constant IACK                : std_logic_vector(3 downto 0) := std_logic_vector(to_unsigned(2, 4));
+  constant LOCK                : std_logic_vector(3 downto 0) := std_logic_vector(to_unsigned(3, 4));
+  constant ADDR                : std_logic_vector(3 downto 0) := std_logic_vector(to_unsigned(4, 4));
+  constant IDMA_BUS                : std_logic_vector(3 downto 0) := std_logic_vector(to_unsigned(5, 4));
+  constant RESET_C                : std_logic_vector(3 downto 0) := std_logic_vector(to_unsigned(6, 4));
+  constant SET_EVNTC                : std_logic_vector(3 downto 0) := std_logic_vector(to_unsigned(7, 4));
+  constant SET_REQC                : std_logic_vector(3 downto 0) := std_logic_vector(to_unsigned(8, 4));
 
 begin
     IDMA_CTRL<=IDMA_CTRL_i;
@@ -61,6 +66,8 @@ begin
     ipbus_write : process (clk) is
     begin  -- process ipbus_manager
         if rising_edge(clk) then            -- rising clock edge
+            set_evnt<='0';
+            set_req<='0';
             if reset = '1' then               -- synchronous reset (active high)
                 IDMA_CTRL_i<=(others=>'1');
                 D_OUT<=(others=>'0');
@@ -75,6 +82,10 @@ begin
                         D_OUT<=ipbus_in.ipb_wdata(IDMA_DATA_WIDTH-1 downto 0);
                     when RESET_C =>
                         reset_sim<=ipbus_in.ipb_wdata(0);
+                    when SET_EVNTC =>
+                        set_evnt<='1';
+                    when SET_REQC =>
+                        set_req<='1';
                     when others => null;
                 end case;
             end if;

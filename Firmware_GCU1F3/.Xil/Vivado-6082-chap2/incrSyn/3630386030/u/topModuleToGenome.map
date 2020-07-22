@@ -1,0 +1,3 @@
+network_interface: network_interface__GC0, payload, 
+payload: payload__GC0, ipbus_subsys, 
+ipbus_subsys: ipbus_subsys__GB1, ipbus_subsys__GB0, 

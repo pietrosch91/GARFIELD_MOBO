@@ -1,0 +1,85 @@
+$date
+        2020-Jul-21 18:15:44
+$end
+$version
+        Vivado v2018.3.1 (64-bit)
+$end
+$timescale
+        1ps
+$end
+$scope module dut $end
+$var reg 32 " network_interface_i/payload_1/ipbus_subsys_i/ipbus_merge/ipbus_slave_1/FIFO_DATA_wr [31:0] $end
+$var reg 16 B \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/D_FROM_DSP [15:0] $end
+$var reg 16 R \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/D_FROM_DSP [15:0] $end
+$var reg 8 b \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspsim/idma_sim/address [7:0] $end
+$var reg 8 j \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/rcnt [7:0] $end
+$var reg 16 r \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/DSP_IAD_int [15:0] $end
+$var reg 8 $" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/rcnt [7:0] $end
+$var reg 16 ," \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/DSP_IAD_int [15:0] $end
+$var reg 8 <" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspsim/idma_sim/address [7:0] $end
+$var reg 1 D" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/DSP_AD_bit $end
+$var reg 1 E" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/DSP_AD_bit $end
+$var reg 1 F" network_interface_i/payload_1/ipbus_subsys_i/ipbus_merge/ipbus_slave_1/fifo_wr $end
+$var reg 1 G" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/fifo_wr_en $end
+$var reg 1 H" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/fifo_wr_en $end
+$var reg 1 I" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/nIACK $end
+$var reg 1 J" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/nIACK $end
+$var reg 1 K" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/nIAL $end
+$var reg 1 L" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/nIAL $end
+$var reg 1 M" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/nRD_int $end
+$var reg 1 N" \network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/nRD_int $end
+$var reg 1 O" _TRIGGER $end
+$var reg 1 P" _WINDOW $end
+$var reg 1 Q" _GAP $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 "
+b0 B
+b0 R
+b0 b
+b0 j
+b0 r
+b0 $"
+b0 ,"
+b0 <"
+0D"
+0E"
+0F"
+0G"
+0H"
+0I"
+0J"
+1K"
+1L"
+1M"
+1N"
+0O"
+1P"
+0Q"
+$end
+#511
+b1 "
+#512
+b10 "
+1F"
+1O"
+#513
+b11 "
+#514
+b100 "
+#515
+b101 "
+#516
+b110 "
+#517
+b111 "
+#518
+b1000 "
+#519
+b1001 "
+#520
+b1010 "
+#522
+0F"

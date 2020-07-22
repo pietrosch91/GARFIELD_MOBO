@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# Vivado v2018.3.1 (64-bit)
+# SW Build 2489853 on Tue Mar 26 04:18:30 MDT 2019
+# IP Build 2486929 on Tue Mar 26 06:44:21 MDT 2019
+# Start of session at: Thu Jul 16 16:56:20 2020
+# Process ID: 5151
+# Current directory: /home/bini/GARFIELD_MOBO/Firmware_GCU1F3
+# Command line: vivado
+# Log file: /home/bini/GARFIELD_MOBO/Firmware_GCU1F3/vivado.log
+# Journal file: /home/bini/GARFIELD_MOBO/Firmware_GCU1F3/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/bini/Desktop/DSP_control/DSP_control.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+launch_simulation
+open_wave_config /home/bini/Desktop/DSP_control/DSP_control_TB_behav.wcfg
+source DSP_control_TB.tcl
+restart
+run 10 us
+close_sim

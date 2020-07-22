@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.3.1 (64-bit)
+# SW Build 2489853 on Tue Mar 26 04:18:30 MDT 2019
+# IP Build 2486929 on Tue Mar 26 06:44:21 MDT 2019
+# Start of session at: Mon Jul  6 12:27:32 2020
+# Process ID: 3767
+# Current directory: /home/bini/GARFIELD_MOBO/fifo_prj/fifo_prj.runs/trig_header_fifo_synth_1
+# Command line: vivado -log trig_header_fifo.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source trig_header_fifo.tcl
+# Log file: /home/bini/GARFIELD_MOBO/fifo_prj/fifo_prj.runs/trig_header_fifo_synth_1/trig_header_fifo.vds
+# Journal file: /home/bini/GARFIELD_MOBO/fifo_prj/fifo_prj.runs/trig_header_fifo_synth_1/vivado.jou
+#-----------------------------------------------------------
+source trig_header_fifo.tcl -notrace

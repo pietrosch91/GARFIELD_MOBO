@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/bini/GARFIELD_MOBO/Vivado_prj/Vivado_prj.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1024000fs"></ZoomEndTime>
+      <Cursor1Time time="522000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="448"></NameColumnWidth>
+      <ValueColumnWidth column_width="134"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="20" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/nRD_int">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/nRD_int</obj_property>
+      <obj_property name="ObjectShortName">nRD_int</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/rcnt">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/rcnt[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rcnt[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspsim/idma_sim/address">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspsim/idma_sim/address[7:0]</obj_property>
+      <obj_property name="ObjectShortName">address[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/DSP_AD_bit">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/DSP_AD_bit</obj_property>
+      <obj_property name="ObjectShortName">DSP_AD_bit</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/DSP_IAD_int">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/DSP_IAD_int[15:0]</obj_property>
+      <obj_property name="ObjectShortName">DSP_IAD_int[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/D_FROM_DSP">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/D_FROM_DSP[15:0]</obj_property>
+      <obj_property name="ObjectShortName">D_FROM_DSP[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/fifo_wr_en">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/fifo_wr_en</obj_property>
+      <obj_property name="ObjectShortName">fifo_wr_en</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/nIAL">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/nIAL</obj_property>
+      <obj_property name="ObjectShortName">nIAL</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/nRD_int">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/nRD_int</obj_property>
+      <obj_property name="ObjectShortName">nRD_int</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/nIACK">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/nIACK</obj_property>
+      <obj_property name="ObjectShortName">nIACK</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/rcnt">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspiface/dsp_cntrl/rcnt[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rcnt[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspsim/idma_sim/address">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[1].dspsim/idma_sim/address[7:0]</obj_property>
+      <obj_property name="ObjectShortName">address[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/D_FROM_DSP">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/D_FROM_DSP[15:0]</obj_property>
+      <obj_property name="ObjectShortName">D_FROM_DSP[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/DSP_AD_bit">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/DSP_AD_bit</obj_property>
+      <obj_property name="ObjectShortName">DSP_AD_bit</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/DSP_IAD_int">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/DSP_IAD_int[15:0]</obj_property>
+      <obj_property name="ObjectShortName">DSP_IAD_int[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/fifo_wr_en">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/fifo_wr_en</obj_property>
+      <obj_property name="ObjectShortName">fifo_wr_en</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/nIACK">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/nIACK</obj_property>
+      <obj_property name="ObjectShortName">nIACK</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/nIAL">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/gen_dsp[0].dspiface/dsp_cntrl/nIAL</obj_property>
+      <obj_property name="ObjectShortName">nIAL</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="network_interface_i/payload_1/ipbus_subsys_i/ipbus_merge/ipbus_slave_1/FIFO_DATA_wr">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/ipbus_merge/ipbus_slave_1/FIFO_DATA_wr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">FIFO_DATA_wr[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="network_interface_i/payload_1/ipbus_subsys_i/ipbus_merge/ipbus_slave_1/fifo_wr">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">network_interface_i/payload_1/ipbus_subsys_i/ipbus_merge/ipbus_slave_1/fifo_wr</obj_property>
+      <obj_property name="ObjectShortName">fifo_wr</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+</wave_config>
